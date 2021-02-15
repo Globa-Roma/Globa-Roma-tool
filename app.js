@@ -1,0 +1,28 @@
+const express = require('express')
+const app = express();
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+//dotenv help to put the link save
+const dotenv = require('dotenv')
+const router = require('./router/route');
+const cors = require('cors');
+
+// body parser middleware
+app.use(bodyParser.json())
+
+dotenv.config()
+mongoose.connect(process.env.Database_link,{ useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false  })
+    .then((result) => console.log('Mongo is connect ...'))
+    .catch((err) => console.log(err))
+
+
+app.use(express.json());
+app.use(cors());
+app.use('/app', router)
+
+
+app.listen(3001,()=>{
+    console.log('My server start ....')
+})
+
+
