@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+
+import { hot } from 'react-hot-loader/root';
 import './App.css';
+import Signup from './compnent/Signup'
+import Client from './compnent/Client'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    
+    <Router>
+      
+      <Route patth="/">
+        <Signup />
+        <Client />
+      </Route>
+     
+
+    </Router>
+     );
 }
 
-export default App;
+
+export default hot(App);
