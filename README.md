@@ -12,5 +12,5 @@
 
 
 ###### clients folder
-- git install
+- npm install
 - git start
