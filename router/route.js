@@ -17,7 +17,11 @@ router.post('/', (req, res) => {
     email: req.body.email,
     telephone: req.body.telephone,
     city: req.body.city,
-    interest: req.body.interest
+    language: req.body.language,
+    other: req.body.other,
+    interest: req.body.interest,
+    
+    
   })
 
   signupschema.save()

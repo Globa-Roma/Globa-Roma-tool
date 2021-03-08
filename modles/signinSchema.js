@@ -2,22 +2,29 @@ const mongoose = require('mongoose');
 
 const signIn = new mongoose.Schema({
     fullName: {
-        type: String,
+        type: String
     },
     email: {
-        type: String,
+        type: String
     },
     telephone: {
-        type: String,
+        type: String
     },
     city: {
-        type: String,
+        type: String
+    },
+    language:{
+        type: String
+    },
+    other: {
+        type: String
     },
     interest: [],
     date: {
         type: Date,
         default: Date.now()
     }
+    
 })
 
 module.exports = mongoose.model('signForm', signIn)
