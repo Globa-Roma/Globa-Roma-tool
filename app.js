@@ -11,7 +11,7 @@ const cors = require('cors');
 app.use(bodyParser.json())
 
 dotenv.config()
-mongoose.connect(process.env.Database_link,{ useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false  })
+mongoose.connect(process.env.Database_link, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false  })
     .then((result) => console.log('Mongo is connect ...'))
     .catch((err) => console.log(err))
 
