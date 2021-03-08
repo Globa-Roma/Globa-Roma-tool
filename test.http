@@ -6,6 +6,6 @@ Content-Type: application/json
     "email":"anna@gmail.com",
     "telephone": "002918998",
     "city": "Gent",
-    "interest": "painting"
+    "interest": []
    
 }
