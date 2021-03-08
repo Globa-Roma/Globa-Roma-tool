@@ -1,22 +1,20 @@
 const mongoose = require('mongoose');
 
 const signIn = new mongoose.Schema({
-    fullName:{
-        type: String, 
-    },
-    email:{
+    fullName: {
         type: String,
     },
-    telephone:{
+    email: {
         type: String,
     },
-    city:{
+    telephone: {
         type: String,
     },
-    interest:{
+    city: {
         type: String,
     },
-    date:{
+    interest: [],
+    date: {
         type: Date,
         default: Date.now()
     }
