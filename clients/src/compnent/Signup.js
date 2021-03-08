@@ -5,8 +5,10 @@ import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Select from 'react-select';
+import Signin from './Signin.css'
 
 // The options 
+
 const select = [
     {
         value: 1,
@@ -30,6 +32,15 @@ const select = [
     }
 ]
 
+const theme = theme => ({
+    ...theme,
+    colors: {
+        ...theme.colors,
+        primary25: "green"
+    }
+});
+
+
 class Signup extends Component {
 
     constructor() {
@@ -39,6 +50,8 @@ class Signup extends Component {
             email: "",
             telephone: "",
             city: "",
+            language: "",
+            other: "",
             interest: []
         }
 
@@ -46,6 +59,8 @@ class Signup extends Component {
         this.changeEmail = this.changeEmail.bind(this)
         this.changeTelephone = this.changeTelephone.bind(this)
         this.changeCity = this.changeCity.bind(this)
+        this.changeLanguage = this.changeLanguage.bind(this)
+        this.changeOther = this.changeOther.bind(this)
         this.changeInterest = this.changeInterest.bind(this)
         this.collect = this.collect.bind(this)
     }
@@ -72,9 +87,21 @@ class Signup extends Component {
             city: event.target.value
         })
     }
+    changeLanguage(event) {
+        this.setState({
+            language: event.target.value
+        })
+    }
+    changeOther(event) {
+        this.setState({
+            other: event.target.value
+        })
+    }
     changeInterest = (interest) => {
         this.setState({ interest });
     }
+
+
 
     // send data from frontend to backend
 
@@ -88,7 +115,10 @@ class Signup extends Component {
             email: this.state.email,
             telephone: this.state.telephone,
             city: this.state.city,
+            language: this.state.language,
+            other: this.state.other,
             interest: this.state.interest
+
         }
 
         axios.post('http://localhost:3001/app', regester)
@@ -99,16 +129,17 @@ class Signup extends Component {
             email: "",
             telephone: "",
             city: "",
+            language: "",
+            other: "",
             interest: []
         })
-
-
     }
 
     // notify message
     notify = () => {
         toast.success('You regestered successfully!');
     }
+
 
     // render 
     render() {
@@ -119,20 +150,21 @@ class Signup extends Component {
                     //transition={zoom}
                     autoClose={3000}
                 />
-                <h1> client SignUp please ...</h1>
-                <form onSubmit={this.collect}>
-                    <input type="text" placeholder="name" value={this.state.fullName} onChange={(event) => this.changeFullName(event)}></input>
-                    <input type="text" placeholder="email" value={this.state.email} onChange={(event) => this.changeEmail(event)} ></input>
-                    <input type="text" placeholder="telephone" value={this.state.telephone} onChange={(event) => this.changeTelephone(event)} ></input>
-                    <input type="text" placeholder="city" value={this.state.city} onChange={(event) => this.changeCity(event)} ></input>
-                    <Select isMulti value={this.state.interest} onChange={this.changeInterest} options={select}></Select>
-                    <button onClick={this.notify} type="submit" className="submit">submit</button>
+                <h1> Register here ...</h1>
+                <form className="form" onSubmit={this.collect}>
+                    <input className="forms" type="text" placeholder="Name" value={this.state.fullName} onChange={(event) => this.changeFullName(event)}></input>
+                    <input className="forms" type="text" placeholder="Email" value={this.state.email} onChange={(event) => this.changeEmail(event)} ></input>
+                    <input className="forms" type="text" placeholder="Telephone" value={this.state.telephone} onChange={(event) => this.changeTelephone(event)} ></input>
+                    <input className="forms" type="text" placeholder="City" value={this.state.city} onChange={(event) => this.changeCity(event)} ></input>
+                    <input className="forms" type="text" placeholder="Language" value={this.state.language} onChange={(event) => this.changeLanguage(event)} ></input>
+                    <Select className="select" isMulti value={this.state.interest} onChange={this.changeInterest} options={select} theme={theme}></Select>
+                    <textarea className="textarea" type="text" placeholder="Other Details" value={this.state.other} onChange={(event) => this.changeOther(event)} ></textarea>
+                    <button className="submit" onClick={this.notify} type="submit" className="submit">ADD</button>
                 </form>
-           </div>
+            </div>
         )
     }
 }
-
 
 
 export default Signup 
