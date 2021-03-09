@@ -4,9 +4,7 @@
 ## steps
 
 ###### main folder
-- git clone 
-- create .env file and put your database link
-   Example : Database_link = "Your Link"
+- git clone
 - npm install
 - nodemon app.js
 
