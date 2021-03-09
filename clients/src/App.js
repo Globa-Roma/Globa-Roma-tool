@@ -12,7 +12,7 @@ function App() {
     
     <Router>
       
-      <Route patth="/register">
+      <Route patth="/">
         <Signup />
         {/* <Client /> */}
       </Route>

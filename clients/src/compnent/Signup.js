@@ -121,7 +121,7 @@ class Signup extends Component {
 
         }
 
-        axios.post('http://localhost:3001/app', regester)
+        axios.post('http://localhost:3001/register', regester)
             .then(res => console.log(res.data))
 
         this.setState({
