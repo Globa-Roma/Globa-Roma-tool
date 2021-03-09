@@ -2,13 +2,6 @@ const express = require('express');
 const router = express.Router();
 const client = require('../modles/signinSchema')
 
-// get client
-router.get('/'), (req, res) => {
-  client.find()
-    .sort({ date: -1 })
-    .catch(clients => res.json(clients))
-
-}
 
 // post client
 router.post('/', (req, res) => {
