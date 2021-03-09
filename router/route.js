@@ -3,26 +3,30 @@ const router = express.Router();
 const client = require('../modles/signinSchema')
 
 // get client
-router.get('/'),(req, res)=>{
+router.get('/'), (req, res) => {
   client.find()
-    .sort({date: -1})
+    .sort({ date: -1 })
     .catch(clients => res.json(clients))
 
 }
 
 // post client
-router.post('/',(req, res)=>{
+router.post('/', (req, res) => {
   const signupschema = new client({
-      fullName:req.body.fullName,
-      email:req.body.email,
-      telephone:req.body.telephone,
-      city:req.body.city,
-      interest:req.body.interest
+    fullName: req.body.fullName,
+    email: req.body.email,
+    telephone: req.body.telephone,
+    city: req.body.city,
+    language: req.body.language,
+    other: req.body.other,
+    interest: req.body.interest,
+    
+    
   })
- 
+
   signupschema.save()
-  .then(client => res.json(client))
-  .catch(err => console.log(err))
+    .then(client => res.json(client))
+    .catch(err => console.log(err))
 
 })
 

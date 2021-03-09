@@ -1,8 +1,8 @@
 
 import { hot } from 'react-hot-loader/root';
 import './App.css';
-import Signup from './compnent/Signup'
-import Client from './compnent/Client'
+import Signup from './compnent/SignUp'
+//import Client from './compnent/Client'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -14,7 +14,7 @@ function App() {
       
       <Route patth="/">
         <Signup />
-        <Client />
+        {/* <Client /> */}
       </Route>
      
 
