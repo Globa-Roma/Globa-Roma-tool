@@ -120,8 +120,8 @@ class Signup extends Component {
             interest: this.state.interest
 
         }
-
-        axios.post('http://localhost:3001/register', regester)
+       // give the host to heroku
+        axios.post('/register', regester)
             .then(res => console.log(res.data))
 
         this.setState({
