@@ -4,7 +4,7 @@ const client = require('../modles/signinSchema')
 
 
 // post client
-router.post('/', (req, res) => {
+router.post('/register', (req, res) => {
   const signupschema = new client({
     fullName: req.body.fullName,
     email: req.body.email,
