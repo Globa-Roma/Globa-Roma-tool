@@ -21,6 +21,14 @@ app.use(cors());
 app.use('/', router)
 
 
-app.listen(process.env.PORT, '0.0.0.0');
+// this work in local matchine
+
+app.listen(3001,()=>{
+    console.log('My server start ....')
+})
+
+
+// and this work in heroku
+//app.listen(process.env.PORT, '0.0.0.0');
 
 
