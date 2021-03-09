@@ -121,7 +121,7 @@ class Signup extends Component {
 
         }
        // give the host to heroku
-        axios.post('http:locallhost/register', regester)
+        axios.post('/', regester)
             .then(res => console.log(res.data))
 
         this.setState({
