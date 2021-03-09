@@ -21,8 +21,6 @@ app.use(cors());
 app.use('/app', router)
 
 
-app.listen(3001,()=>{
-    console.log('My server start ....')
-})
+app.listen(process.env.PORT, '0.0.0.0');
 
 
