@@ -18,7 +18,7 @@ mongoose.connect(process.env.Database_link, { useNewUrlParser: true, useUnifiedT
 
 app.use(express.json());
 app.use(cors());
-app.use('/app', router)
+app.use('/', router)
 
 
 app.listen(process.env.PORT, '0.0.0.0');
