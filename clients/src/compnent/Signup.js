@@ -32,13 +32,31 @@ const select = [
     }
 ]
 
+const language = [
+    {
+        value: 1,
+        label: "english"
+    },
+    {
+        value: 2,
+        label: "dutch"
+    },
+    {
+        value: 3,
+        label: "france"
+    }
+]
+
+
+// multiselective style
 const theme = theme => ({
     ...theme,
     colors: {
         ...theme.colors,
-        primary25: "green"
+        primary25: "#95C11F"
     }
 });
+
 
 
 class Signup extends Component {
@@ -50,9 +68,9 @@ class Signup extends Component {
             email: "",
             telephone: "",
             city: "",
-            language: "",
+            language: {},
             other: "",
-            interest: []
+            interest: {}
         }
 
         this.changeFullName = this.changeFullName.bind(this)
@@ -87,11 +105,10 @@ class Signup extends Component {
             city: event.target.value
         })
     }
-    changeLanguage(event) {
-        this.setState({
-            language: event.target.value
-        })
+    changeLanguage = (language) =>{
+        this.setState({ language });
     }
+        
     changeOther(event) {
         this.setState({
             other: event.target.value
@@ -129,9 +146,9 @@ class Signup extends Component {
             email: "",
             telephone: "",
             city: "",
-            language: "",
+            language: {},
             other: "",
-            interest: []
+            interest: {}
         })
     }
 
@@ -158,7 +175,7 @@ class Signup extends Component {
                             <input className="forms" type="text" placeholder="Email" value={this.state.email} onChange={(event) => this.changeEmail(event)} ></input>
                             <input className="forms" type="text" placeholder="Telephone" value={this.state.telephone} onChange={(event) => this.changeTelephone(event)} ></input>
                             <input className="forms" type="text" placeholder="City" value={this.state.city} onChange={(event) => this.changeCity(event)} ></input>
-                            <input className="forms" type="text" placeholder="Language" value={this.state.language} onChange={(event) => this.changeLanguage(event)} ></input>
+                            <Select className="select" isMulti value={this.state.language} onChange={this.changeLanguage} options={language} theme={theme}></Select>
                             <Select className="select" isMulti value={this.state.interest} onChange={this.changeInterest} options={select} theme={theme}></Select>
                             <textarea className="textarea" type="text" placeholder="Other Details" value={this.state.other} onChange={(event) => this.changeOther(event)} ></textarea>
                             <button className="submit" onClick={this.notify} type="submit" className="submit">Add</button>
