@@ -171,13 +171,13 @@ class Signup extends Component {
                         />
                         <h2> Register here ...</h2>
                         <form className="form" onSubmit={this.collect}>
-                            <input className="forms" type="text" placeholder="Name" value={this.state.fullName} onChange={(event) => this.changeFullName(event)}></input>
-                            <input className="forms" type="text" placeholder="Email" value={this.state.email} onChange={(event) => this.changeEmail(event)} ></input>
-                            <input className="forms" type="text" placeholder="Telephone" value={this.state.telephone} onChange={(event) => this.changeTelephone(event)} ></input>
-                            <input className="forms" type="text" placeholder="City" value={this.state.city} onChange={(event) => this.changeCity(event)} ></input>
+                            <input className="forms" type="text" placeholder="Name" value={this.state.fullName} onChange={(event) => this.changeFullName(event)} maxLength={20}></input>
+                            <input className="forms" type="text" placeholder="Email" value={this.state.email} onChange={(event) => this.changeEmail(event)} maxLength={20} ></input>
+                            <input className="forms" type="number" placeholder="Telephone" value={this.state.telephone} onChange={(event) => this.changeTelephone(event)} ></input>
+                            <input className="forms" type="text" placeholder="City" value={this.state.city} onChange={(event) => this.changeCity(event)} maxLength={15} ></input>
                             <Select className="select" isMulti value={this.state.language} onChange={this.changeLanguage} options={language} theme={theme}></Select>
                             <Select className="select" isMulti value={this.state.interest} onChange={this.changeInterest} options={select} theme={theme}></Select>
-                            <textarea className="textarea" type="text" placeholder="Other Details" value={this.state.other} onChange={(event) => this.changeOther(event)} ></textarea>
+                            <textarea className="textarea" type="text" placeholder="100 words limit" value={this.state.other} onChange={(event) => this.changeOther(event)} maxLength={100}></textarea>
                             <button className="submit" onClick={this.notify} type="submit" className="submit">Add</button>
                         </form>
                     </div>
