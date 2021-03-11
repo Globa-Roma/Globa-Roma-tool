@@ -1,0 +1,28 @@
+body{
+    background-color: whitesmoke;
+    
+}
+h1{
+    font-size: 30px;
+    font-family:monospace;
+}
+.links{
+    margin-left: 30%;
+    margin-top: 10%;
+    }
+.link{
+    margin: 20px;
+    color: black;
+    
+
+}
+.link:hover{
+    color: white;
+    text-decoration: none; 
+}
+.button{
+    margin: 20px;
+    background-color: #95C11F;
+    border: 2px lightgray;
+    height: 50px;
+}

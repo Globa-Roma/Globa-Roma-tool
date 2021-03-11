@@ -144,23 +144,26 @@ class Signup extends Component {
     // render 
     render() {
         return (
-            <div className="formContainer">
-                <ToastContainer
-                    draggable={false}
-                    //transition={zoom}
-                    autoClose={3000}
-                />
-                <h1> Register here ...</h1>
-                <form className="form" onSubmit={this.collect}>
-                    <input className="forms" type="text" placeholder="Name" value={this.state.fullName} onChange={(event) => this.changeFullName(event)}></input>
-                    <input className="forms" type="text" placeholder="Email" value={this.state.email} onChange={(event) => this.changeEmail(event)} ></input>
-                    <input className="forms" type="text" placeholder="Telephone" value={this.state.telephone} onChange={(event) => this.changeTelephone(event)} ></input>
-                    <input className="forms" type="text" placeholder="City" value={this.state.city} onChange={(event) => this.changeCity(event)} ></input>
-                    <input className="forms" type="text" placeholder="Language" value={this.state.language} onChange={(event) => this.changeLanguage(event)} ></input>
-                    <Select className="select" isMulti value={this.state.interest} onChange={this.changeInterest} options={select} theme={theme}></Select>
-                    <textarea className="textarea" type="text" placeholder="Other Details" value={this.state.other} onChange={(event) => this.changeOther(event)} ></textarea>
-                    <button className="submit" onClick={this.notify} type="submit" className="submit">ADD</button>
-                </form>
+            <div>
+                <h1>Globa Aroma</h1>
+                 <div className="formContainer">
+                        <ToastContainer
+                            draggable={false}
+                            //transition={zoom}
+                            autoClose={3000}
+                        />
+                        <h2> Register here ...</h2>
+                        <form className="form" onSubmit={this.collect}>
+                            <input className="forms" type="text" placeholder="Name" value={this.state.fullName} onChange={(event) => this.changeFullName(event)}></input>
+                            <input className="forms" type="text" placeholder="Email" value={this.state.email} onChange={(event) => this.changeEmail(event)} ></input>
+                            <input className="forms" type="text" placeholder="Telephone" value={this.state.telephone} onChange={(event) => this.changeTelephone(event)} ></input>
+                            <input className="forms" type="text" placeholder="City" value={this.state.city} onChange={(event) => this.changeCity(event)} ></input>
+                            <input className="forms" type="text" placeholder="Language" value={this.state.language} onChange={(event) => this.changeLanguage(event)} ></input>
+                            <Select className="select" isMulti value={this.state.interest} onChange={this.changeInterest} options={select} theme={theme}></Select>
+                            <textarea className="textarea" type="text" placeholder="Other Details" value={this.state.other} onChange={(event) => this.changeOther(event)} ></textarea>
+                            <button className="submit" onClick={this.notify} type="submit" className="submit">Add</button>
+                        </form>
+                    </div>
             </div>
         )
     }
