@@ -7,6 +7,8 @@ import 'react-toastify/dist/ReactToastify.css'
 import Select from 'react-select';
 import Signin from './Signin.css'
 
+
+
 // The options 
 
 const select = [
@@ -68,9 +70,9 @@ class Signup extends Component {
             email: "",
             telephone: "",
             city: "",
-            language: {},
+            language: [],
             other: "",
-            interest: {}
+            interest: []
         }
 
         this.changeFullName = this.changeFullName.bind(this)
@@ -81,7 +83,7 @@ class Signup extends Component {
         this.changeOther = this.changeOther.bind(this)
         this.changeInterest = this.changeInterest.bind(this)
         this.collect = this.collect.bind(this)
-    }
+       }
 
 
     // onchange function
@@ -138,7 +140,7 @@ class Signup extends Component {
 
         }
 
-        axios.post('http://localhost:3001/register', regester)
+        axios.post('http://localhost:3001/globa-aroma/register', regester)
             .then(res => console.log(res.data))
 
         this.setState({
@@ -146,9 +148,9 @@ class Signup extends Component {
             email: "",
             telephone: "",
             city: "",
-            language: {},
+            language: [],
             other: "",
-            interest: {}
+            interest: []
         })
     }
 
@@ -180,7 +182,8 @@ class Signup extends Component {
                             <textarea className="textarea" type="text" placeholder="100 words limit" value={this.state.other} onChange={(event) => this.changeOther(event)} maxLength={100}></textarea>
                             <button className="submit" onClick={this.notify} type="submit" className="submit">Add</button>
                         </form>
-                    </div>
+                        
+                </div>
             </div>
         )
     }

@@ -12,10 +12,10 @@ class Option extends Component{
                 <h1>Globa Aroma</h1>
                 <div className="links">
                     <button className="button">
-                       <Link to="/register" className="link">Add A New Member</Link>
+                       <Link to="/globa-aroma/register" className="link">Add A New Member</Link>
                     </button>
                     <button className="button">
-                       <Link to="/" className="link">Send Message</Link>
+                       <Link to="/globa-aroma/clients" className="link">Send Message</Link>
                     </button>
                    
                 </div>

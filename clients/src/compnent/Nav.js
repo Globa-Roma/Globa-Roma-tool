@@ -7,8 +7,9 @@ const Navbar = () => {
     <nav className="navbar">
       
          <div className="navbar-start">
-            <NavLink className="navbar-item"  to="/option"></NavLink>
-            <NavLink className="navbar-item"  to="/register"></NavLink>
+            <NavLink className="navbar-item"  to="/globa-aroma/option"></NavLink>
+            <NavLink className="navbar-item"  to="/globa-aroma/register"></NavLink>
+            <NavLink className="navbar-item"  to="/globa-aroma/clients"></NavLink>
           </div>
     </nav>
   );
