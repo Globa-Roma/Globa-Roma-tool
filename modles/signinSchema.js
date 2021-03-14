@@ -13,11 +13,11 @@ const signIn = new mongoose.Schema({
     city: {
         type: String
     },
-    language:{},
+    language:[],
     other: {
         type: String
     },
-    interest: {},
+    interest: [],
     date: {
         type: Date,
         default: Date.now()

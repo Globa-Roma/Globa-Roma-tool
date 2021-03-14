@@ -3,6 +3,19 @@ const router = express.Router();
 const client = require('../modles/signinSchema')
 
 
+// // get
+router.get('/clients', (req, res) => {
+
+  client.find({  })
+      .then((data) => {
+          console.log('Data: ', data);
+          res.json(data);
+      })
+      .catch((error) => {
+          console.log('error: ', error);
+      });
+});
+
 // post client
 router.post('/register', (req, res) => {
   const signupschema = new client({
@@ -22,6 +35,8 @@ router.post('/register', (req, res) => {
     .catch(err => console.log(err))
 
 })
+
+
 
 
 module.exports = router;

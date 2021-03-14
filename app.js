@@ -18,7 +18,7 @@ mongoose.connect(process.env.Database_link, { useNewUrlParser: true, useUnifiedT
 
 app.use(express.json());
 app.use(cors());
-app.use('/', router)
+app.use('/globa-aroma', router)
 
 
 // and this work in heroku
