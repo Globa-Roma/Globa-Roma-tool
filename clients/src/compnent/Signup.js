@@ -140,8 +140,10 @@ class Signup extends Component {
 
         }
 
+
         axios.post('http://localhost:3001/globa-aroma/register', regester)
-            .then(res => console.log(res.data))
+
+             .then(res => console.log(res.data))
 
         this.setState({
             fullName: "",
