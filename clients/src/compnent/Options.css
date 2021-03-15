@@ -22,7 +22,7 @@ h1{
 }
 .button{
     margin: 20px;
-    background-color: #95C11F;
+    background-color: rgba(2, 138, 138, 0.582);
     border: 2px lightgray;
     height: 50px;
 }

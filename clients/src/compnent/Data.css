@@ -1,4 +1,38 @@
+
+.blog{
+    width: 100%;
+    background-color: rgba(2, 138, 138, 0.582);
+    margin-left: -10%;
+}
+
 .clientsData{
+    display: flex;
+    flex-direction: column;
     margin: 10px;
-    width: 100px;
+    padding: 10px;
+    width: 100%;
+    
+}
+.warnning{
+    color: orange;
+}
+.person{
+   
+    margin: 10px;
+    margin-left: 20%;
+    padding: 10px;
+    width: 60%;
+    background-color: whitesmoke;
+    
+
+}
+.h1{
+    
+    width: 100%;
+    background-color: rgba(2, 138, 138, 0.582);
+}
+span{
+    
+    color: rgba(2, 138, 138, 0.582);
+    font-weight: bold;
 }
