@@ -32,12 +32,21 @@ h1{
     border: 2px white solid;
    
 }
-.select{
+.tele, .city, .name, .email{
+    margin: 10px;
+    width: 38%;
+    height: 50px;
+    border-radius: 5px;
+    border: 2px white solid;
+
+}
+ .select{
     margin: 10px;
     width: 80%;
     height: 60px;
     border-radius: 5px;
 }
+
 .textarea{
     margin: 10px;
     width: 80%;
@@ -47,7 +56,16 @@ h1{
 }
 .submit{
     margin: 10px;
-    width: 80%;
+    width: 30%;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #95C11F;
+    color: black;
+    border: 2px rgba(0, 128, 128, 0.582);
+}
+.viewList{
+    margin: 10px;
+    width: 30%;
     height: 30px;
     border-radius: 5px;
     background-color: #95C11F;
@@ -57,4 +75,7 @@ h1{
 .submit:hover{
     color: white;
 
+}
+.viewList:hover{
+    color: white;
 }

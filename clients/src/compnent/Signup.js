@@ -5,6 +5,7 @@ import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Select from 'react-select';
+import { Link } from "react-router-dom";
 import Signin from './Signin.css'
 
 
@@ -168,21 +169,28 @@ class Signup extends Component {
             <div>
                 <h1>Globa Aroma</h1>
                  <div className="formContainer">
-                        <ToastContainer
+
+                 <ToastContainer
                             draggable={false}
                             //transition={zoom}
                             autoClose={3000}
                         />
+                       
                         <h2> Register here ...</h2>
                         <form className="form" onSubmit={this.collect}>
-                            <input className="forms" type="text" placeholder="Name" value={this.state.fullName} onChange={(event) => this.changeFullName(event)} maxLength={20}></input>
-                            <input className="forms" type="text" placeholder="Email" value={this.state.email} onChange={(event) => this.changeEmail(event)} maxLength={20} ></input>
-                            <input className="forms" type="number" placeholder="Telephone" value={this.state.telephone} onChange={(event) => this.changeTelephone(event)} ></input>
-                            <input className="forms" type="text" placeholder="City" value={this.state.city} onChange={(event) => this.changeCity(event)} maxLength={15} ></input>
-                            <Select className="select" isMulti value={this.state.language} onChange={this.changeLanguage} options={language} theme={theme}></Select>
-                            <Select className="select" isMulti value={this.state.interest} onChange={this.changeInterest} options={select} theme={theme}></Select>
+                            <input className="name" type="text" placeholder="Name" value={this.state.fullName} onChange={(event) => this.changeFullName(event)} maxLength={30} required></input>
+                            <input className="email" type="text" placeholder="Email" value={this.state.email} onChange={(event) => this.changeEmail(event)} maxLength={20} required></input>
+                            <input className="tele" type="number" placeholder="Telephone" value={this.state.telephone} onChange={(event) => this.changeTelephone(event)} required></input>
+                            <input className="city" type="text" placeholder="City" value={this.state.city} onChange={(event) => this.changeCity(event)} maxLength={15} required></input>
+                            <Select className="select" placeholder="Language" isMulti value={this.state.language} onChange={this.changeLanguage} options={language} theme={theme} required></Select>
+                            <Select className="select" placeholder="Interset" isMulti value={this.state.interest} onChange={this.changeInterest} options={select} theme={theme} required></Select>
                             <textarea className="textarea" type="text" placeholder="100 words limit" value={this.state.other} onChange={(event) => this.changeOther(event)} maxLength={100}></textarea>
-                            <button className="submit" onClick={this.notify} type="submit" className="submit">Add</button>
+                            <button onClick={this.notify} type="submit" className="submit">Add</button>
+                            <Link to="/globa-aroma/clients">
+                                <button className="viewList"> 
+                                <img src="https://img.icons8.com/material-rounded/24/000000/person-male.png"/>View List
+                                </button>
+                            </Link>
                         </form>
                         
                 </div>

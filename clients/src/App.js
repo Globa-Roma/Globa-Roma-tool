@@ -6,7 +6,8 @@ import Signup from './compnent/Signup'
 import Option from './compnent/Option'
 import Navbar from './compnent/Nav'
 import Data from './compnent/Data'
-
+import Detail from'./compnent/Detail'
+import EditUser from'./compnent/Edit'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -20,12 +21,22 @@ function App() {
         <Route exact path="/globa-aroma/register">
           <Signup />
         </Route>
+        
         <Route path="/globa-aroma/option">
           <Option />
         </Route>
+        
         <Route path="/globa-aroma/clients">
           <Data />
         </Route>
+
+        <Route path="/globa-aroma/detail/:clientId">
+          <Detail />
+        </Route>
+        <Route path="/globa-aroma/edit/:id">
+          <EditUser />
+        </Route>
+
       </Switch>
     </div>
   </Router>

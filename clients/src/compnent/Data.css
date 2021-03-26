@@ -1,13 +1,13 @@
-
+body{
+    font-size: 15px;;
+}
 .blog{
     width: 100%;
     background-color: rgba(2, 138, 138, 0.582);
-    margin-left: -10%;
+    margin-left: -5%;
 }
 
 .clientsData{
-    display: flex;
-    flex-direction: column;
     margin: 10px;
     padding: 10px;
     width: 100%;
@@ -16,23 +16,34 @@
 .warnning{
     color: orange;
 }
-.person{
-   
-    margin: 10px;
-    margin-left: 20%;
-    padding: 10px;
-    width: 60%;
-    background-color: whitesmoke;
-    
 
+
+.int{
+    width: 250px;
 }
-.h1{
+.add{
+    float: right;
+    padding : 10px;
+
     
-    width: 100%;
-    background-color: rgba(2, 138, 138, 0.582);
 }
-span{
+.addButton{
+    border: none;
+   background-color: #95C11F;
+   border-radius: 5px;
+     
+}
+.addButton:hover{
+color: white;
+}
+.addImage{
+    margin: 10px;
     
-    color: rgba(2, 138, 138, 0.582);
-    font-weight: bold;
 }
+.thead{
+    color: white;
+}
+
+
+
+

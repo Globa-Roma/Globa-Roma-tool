@@ -10,13 +10,8 @@ h1{
     margin-left: 20%;
     margin-top: 10%;
     }
-.link{
-    margin: 20px;
-    color: black;
-    
 
-}
-.link:hover{
+.button:hover{
     color: white;
     text-decoration: none; 
 }
@@ -25,4 +20,5 @@ h1{
     background-color: rgba(2, 138, 138, 0.582);
     border: 2px lightgray;
     height: 50px;
+    padding: 10px;
 }
