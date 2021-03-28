@@ -6,7 +6,7 @@ import Signup from './compnent/Signup'
 import Option from './compnent/Option'
 import Navbar from './compnent/Nav'
 import Data from './compnent/Data'
-import Detail from'./compnent/Detail'
+// import Detail from'./compnent/Detail'
 
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -30,9 +30,9 @@ function App() {
           <Data />
         </Route>
 
-        <Route path="/globa-aroma/detail/:clientId">
+        {/* <Route path="/globa-aroma/detail/:clientId">
           <Detail />
-        </Route>
+        </Route> */}
 
       </Switch>
     </div>

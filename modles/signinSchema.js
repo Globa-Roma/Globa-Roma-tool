@@ -25,4 +25,4 @@ const signIn = new mongoose.Schema({
     
 })
 
-module.exports = mongoose.model('signForm', signIn)
+module.exports = mongoose.model('signforms', signIn)

@@ -25,7 +25,7 @@ class Client extends Component{
     
     
          getBlogPost = () => {
-            axios.get('http://localhost:3001/globa-aroma/clients')
+            axios.get('http://localhost:3002/globa-aroma/clients')
               .then((response) => {
                 const data = response.data;
                 this.setState({ posts: data });
@@ -49,7 +49,7 @@ class Client extends Component{
         return(
           
         <div className="blog">
-          {this.noClient(this.state.posts)}
+          {/* {this.noClient(this.state.posts)} */}
           {/* {this.displayBlogPost(this.state.posts)} */}
           
              
@@ -62,7 +62,7 @@ class Client extends Component{
                   </Link>
                 
                   
-                  <table class=" table table-striped">
+                  <table className=" table table-striped">
                      <thead>
                           <tr className="thead">
                             <th>Full Name</th>
