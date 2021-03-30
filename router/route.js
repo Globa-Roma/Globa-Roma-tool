@@ -8,7 +8,7 @@ router.get('/clients', (req, res) => {
 
   client.find({  })
       .then((data) => {
-          console.log('Data: ', data);
+          // console.log('Data: ', data);
           res.json(data);
       })
       .catch((error) => {
@@ -53,20 +53,32 @@ router.get('/detail/client_by_id', (req, res) => {
             return people
         })
       }
+    console.log("clientsId", ourClient)
 
-      console.log("clientsId", ourClient)
-
-
-    //we need to find the product information that belong to product Id 
-    
-    client.find({ '_id': { $in: clients } })
-        .populate('writer')
-        .exec((err, clients) => {
+  //find the client information that belong to client Id 
+    client.find({ '_id': { $in: client } })
+        .populate('Client')
+        .exec((err, client) => {
             if (err) return res.status(400).send(err)
-            return res.status(200).send(clients)
+            return res.status(200).send(client)
         })
  
 })
+
+
+
+
+
+
+// delete
+router.delete("/delete/:id", (req, res) => {
+  client.findByIdAndRemove(req.params.id).exec((error, deletedItem) => {
+    if (error) {
+      res.send(error);
+    }
+    return res.json(deletedItem);
+  });
+});
 
 
 module.exports = router;

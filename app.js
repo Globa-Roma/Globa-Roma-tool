@@ -26,7 +26,7 @@ app.use('/globa-aroma', router)
 
 // this work in local matchine
 
-app.listen(3002,()=>{
+app.listen(3001,()=>{
     console.log('My server start ....')
 })
 

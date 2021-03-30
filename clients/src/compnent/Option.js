@@ -9,7 +9,7 @@ class Option extends Component{
     render(){
         return (
             <div> 
-                <h1>Globa Aroma</h1>
+                <h2>Globa - Aroma</h2>
                 <div className="links">
                     
                        <Link to="/globa-aroma/register" className="link">

@@ -142,7 +142,7 @@ class Signup extends Component {
         }
 
 
-        axios.post('http://localhost:3002/globa-aroma/register', regester)
+        axios.post('http://localhost:3001/globa-aroma/register', regester)
 
              .then(res => console.log(res.data))
 

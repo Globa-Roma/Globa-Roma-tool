@@ -24,6 +24,7 @@ body{
 .add{
     float: right;
     padding : 10px;
+    margin-right: 25px;
 
     
 }
@@ -42,6 +43,7 @@ color: white;
 }
 .thead{
     color: white;
+  
 }
 
 

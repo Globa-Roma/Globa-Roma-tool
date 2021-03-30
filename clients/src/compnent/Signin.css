@@ -55,7 +55,8 @@ h1{
     border: 2px rgba(0, 128, 128, 0.582);
 }
 .submit{
-    margin: 10px;
+  
+    margin-left: 50px;
     width: 30%;
     height: 30px;
     border-radius: 5px;
