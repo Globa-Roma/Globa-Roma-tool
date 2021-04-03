@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const client = require('../modles/signinSchema')
+const Clients = require('../modles/signinSchema')
+
 
 
 // // get
 router.get('/clients', (req, res) => {
 
-  client.find({  })
+  Clients.find({  })
       .then((data) => {
           // console.log('Data: ', data);
           res.json(data);
@@ -18,7 +19,7 @@ router.get('/clients', (req, res) => {
 
 // post client
 router.post('/register', (req, res) => {
-  const signupschema = new client({
+  const signupschema = new Clients({
     fullName: req.body.fullName,
     email: req.body.email,
     telephone: req.body.telephone,
@@ -31,54 +32,52 @@ router.post('/register', (req, res) => {
   })
 
   signupschema.save()
-    .then(client => res.json(client))
+    .then(Clients => res.json(Clients))
     .catch(err => console.log(err))
 
 })
 
 
-
-// get Detail
-router.get('/detail/client_by_id', (req, res) => {
-
-  let type = req.query.type
-    let ourClient = req.query.id
-
-    console.log("req.query.id", req.query.id)
-
-    if (type === "array") {
-        let ids = req.query.id.split(',');
-        ourClient = [];
-        ourClient = ids.map(people => {
-            return people
-        })
-      }
-    console.log("clientsId", ourClient)
-
-  //find the client information that belong to client Id 
-    client.find({ '_id': { $in: client } })
-        .populate('Client')
-        .exec((err, client) => {
-            if (err) return res.status(400).send(err)
-            return res.status(200).send(client)
-        })
- 
-})
-
-
-
-
+// find id
+router.route('/:id').get((req, res) => {
+  Clients.findById(req.params.id)
+    .then(people => res.json(people))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
 
 
 // delete
-router.delete("/delete/:id", (req, res) => {
-  client.findByIdAndRemove(req.params.id).exec((error, deletedItem) => {
-    if (error) {
-      res.send(error);
-    }
-    return res.json(deletedItem);
-  });
+router.route('/clients/:id').delete((req, res) => {
+  Clients.findByIdAndDelete(req.params.id)
+    .then(() => res.json('Client deleted.'))
+    .catch(err => res.status(400).json('Error: ' + err));
+    
 });
+
+
+// update
+router.route('/update/:id').post((req, res) => {
+  Clients.findById(req.params.id)
+    .then(people => {
+      people.fullName = req.body.fullName;
+      people.email = req.body.email;
+      people.telephone = (req.body.telephone);
+      people.city = req.body.city;
+      people.language = req.body.language;
+      people.interest = req.body.interest;
+      people.other = req.body.other;
+      people.date = Date.parse(req.body.date);
+
+      people.save()
+        .then(() => res.json('client updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+
+
+
 
 
 module.exports = router;

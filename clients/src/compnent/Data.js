@@ -1,7 +1,10 @@
-import React,{Component, setState, useState, useEffect} from 'react';
+import React,{Component} from 'react';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import Data from './Data.css'
+import { response } from 'express';
+
+
 
 
 
@@ -16,10 +19,10 @@ class Client extends Component{
             language: [],
             other: "",
             interest: [],
-            posts: []
+            Clients: []
         };
 
-      
+        this.delete = this.delete.bind(this)
       }
 
       componentDidMount =() =>{
@@ -28,11 +31,11 @@ class Client extends Component{
     
     
          getBlogPost = () => {
-            axios.get('http://localhost:3001/globa-aroma/clients')
+            axios.get('/clients')
               .then((res) => {
                 const data = res.data;
-                this.setState({ posts: res.data });
-                console.log({ posts: data });
+                this.setState({ Clients: res.data });
+                console.log({ Clients: data });
               })
               .catch((error) => {
                 console.log(error);
@@ -41,34 +44,32 @@ class Client extends Component{
 
        // render if there is no client
           noClient =()=>{
-            if (!this.state.posts.length) 
+            if (!this.state.Clients.length) 
             {return <h1 className="client">Loading .....</h1>}
           }
 
-    // delete 
 
-    onDelete = (id) => {
-      axios.delete(`/globa-aroma/delete/${id}`).then((res) => {
-        alert(res.data.id + " has been deleted successfully");
-        this.getBlogPost();
-        });
-    };
-     
-    
-    
-    
-    render(){
+          delete(id) {
+            axios.delete('/clients/'+id)
+              .then(response => { console.log(response.data)});
+              this.setState({
+              clients: this.state.Clients.filter(el => el._id !== id)
+            })
+          }
+
+   
+
+
+  render(){
 
         return(
           
         <div className="blog">
-          {this.noClient(this.state.posts)}
-          {/* {this.displayBlogPost(this.state.posts)} */}
-          
+          {this.noClient(this.state.Clients)}
+         
+          <div className="clientsData">
              
-         <div className="clientsData">
-             
-                <Link className="add"  to="/globa-aroma/register">
+                <Link className="add"  to="/register">
                   <button className="addButton">
                     <img className="addImage" src="https://img.icons8.com/material-rounded/24/000000/plus--v1.png"/>
                     Add Client
@@ -86,45 +87,45 @@ class Client extends Component{
                             <th>City</th>
                             <th>Language</th>
                             <th>Interest</th>
-                            <th> </th>
+                            <th></th>
+                            <th></th>
                         </tr>
                      </thead>
-                     <tbody>
+                   <tbody>
 
-         
-
-          {this.state.posts.map(person => ( 
+              {this.state.Clients.map(person => ( 
                 <tr>
-                  <td>{person.fullName}</td>
-                  <td>{person.email}</td>
-                  <td>{person.telephone}</td>
-                  <td>{person.city}</td>
-                  <td className="lang">{person.language.map((lang, index ) =>{
+                  
+                  <td key={person.id}>{person.fullName}</td>
+                  <td key={person.id}>{person.email}</td>
+                  <td key={person.id}>{person.telephone}</td>
+                  <td key={person.id}>{person.city}</td>
+                  <td key={person.id} className="lang">{person.language.map((lang, index ) =>{
                              return( <span key={index}> {lang.label}/</span> )
                             })}
                   </td>
-                  <td>
-                    
-                   <td className="int">{person.interest.map((lang, index ) =>{
-                             return( <span key={index}> {lang.label}/ </span> )
+                  <td  key={person.id} className="int">{person.interest.map((lang, index ) =>{
+                             return( <span key={person.id}> {lang.label}/ </span> )
                             })}
                     </td> 
                     <td>
-                      <a href={`/globa-aroma/detail/${person._id}`}> <img src="https://img.icons8.com/fluent-systems-filled/24/000000/ball-point-pen.png"/></a>
-                      <a  onClick={() => this.onDelete(this.state.posts._id)}><img src="https://img.icons8.com/ios-glyphs/30/000000/delete-forever.png"/></a>
+                         <Link to={"/edit/"+person._id}> <img src="https://img.icons8.com/fluent-systems-filled/24/000000/ball-point-pen.png"/></Link>
                     </td>
-                  </td>
+                    <td>
+                       <a href="" onClick={() => { this.delete(person._id) }}><img src="https://img.icons8.com/ios-glyphs/30/000000/delete-forever.png"/></a>
+                    </td>
               </tr>
-              ))}
-            
+            ))}
           </tbody>
-      </table>
-            
-    </div> 
-      </div>  )}
-
+        </table>
+      </div> 
+  </div>  
+  )}
+a
 }
 
-    
+    export default Client
 
-export default Client
+
+
+

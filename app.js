@@ -10,6 +10,7 @@ const cors = require('cors');
 // body parser middleware
 app.use(bodyParser.json())
 
+
 dotenv.config()
 mongoose.connect(process.env.Database_link, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false  })
     .then((result) => console.log('Mongo is connect ...'))
@@ -18,7 +19,7 @@ mongoose.connect(process.env.Database_link, { useNewUrlParser: true, useUnifiedT
 
 app.use(express.json());
 app.use(cors());
-app.use('/globa-aroma', router)
+app.use('/', router)
 
 
 // // and this work in heroku
@@ -26,7 +27,7 @@ app.use('/globa-aroma', router)
 
 // this work in local matchine
 
-app.listen(3001,()=>{
+app.listen(8080,()=>{
     console.log('My server start ....')
 })
 

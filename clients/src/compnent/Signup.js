@@ -142,7 +142,7 @@ class Signup extends Component {
         }
 
 
-        axios.post('http://localhost:3001/globa-aroma/register', regester)
+        axios.post('/register', regester)
 
              .then(res => console.log(res.data))
 
@@ -178,7 +178,9 @@ class Signup extends Component {
                        
                         <h2> Register here ...</h2>
                         <form className="form" onSubmit={this.collect}>
-                            <input className="name" type="text" placeholder="Name" value={this.state.fullName} onChange={(event) => this.changeFullName(event)} maxLength={30} required></input>
+                        
+                             <input type="hidden" name="id" value={this.state._id}/>
+                             <input className="name" type="text" placeholder="Name" value={this.state.fullName} onChange={(event) => this.changeFullName(event)} maxLength={30} required></input>
                             <input className="email" type="text" placeholder="Email" value={this.state.email} onChange={(event) => this.changeEmail(event)} maxLength={20} required></input>
                             <input className="tele" type="number" placeholder="Telephone" value={this.state.telephone} onChange={(event) => this.changeTelephone(event)} required></input>
                             <input className="city" type="text" placeholder="City" value={this.state.city} onChange={(event) => this.changeCity(event)} maxLength={15} required></input>
@@ -186,7 +188,7 @@ class Signup extends Component {
                             <Select className="select" placeholder="Interset" isMulti value={this.state.interest} onChange={this.changeInterest} options={select} theme={theme} required></Select>
                             <textarea className="textarea" type="text" placeholder="100 words limit" value={this.state.other} onChange={(event) => this.changeOther(event)} maxLength={100}></textarea>
                             <button onClick={this.notify} type="submit" className="submit">Add</button>
-                            <Link to="/globa-aroma/clients">
+                            <Link to="/clients">
                                 <button className="viewList"> 
                                 <img src="https://img.icons8.com/material-rounded/24/000000/person-male.png"/>View List
                                 </button>

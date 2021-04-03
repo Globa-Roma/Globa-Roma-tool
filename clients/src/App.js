@@ -1,40 +1,40 @@
 
-import { hot } from 'react-hot-loader/root';
 
-import './App.css';
 import Signup from './compnent/Signup'
 import Option from './compnent/Option'
 import Navbar from './compnent/Nav'
 import Data from './compnent/Data'
-import Detail from'./compnent/Detail'
+import Login from "./compnent/Login"
+import Update from "./compnent/Update"
+
+
 
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
+ 
   return (
     <Router>
     <Navbar />
     <div className="container">
       <Switch>
-        <Route exact path="/globa-aroma/register">
+      <Route exact path="/">
+          <Login />
+        </Route>
+        <Route exact path="/register">
           <Signup />
         </Route>
         
-        <Route path="/globa-aroma/option">
+        <Route path="/option">
           <Option />
         </Route>
         
-        <Route path="/globa-aroma/clients">
+        <Route path="/clients">
           <Data />
         </Route>
-
-        {/* <Route path="/globa-aroma/detail/:clientId">
-          <Detail />
-        </Route> */}
-
-     <Route exact path={"/globa-aroma/detail/:clientId"} component={Detail} />
+        <Route path="/edit/:id" component={Update} />
 
       </Switch>
     </div>
@@ -44,4 +44,4 @@ function App() {
 }
 
 
-export default hot(App);
+export default App;
