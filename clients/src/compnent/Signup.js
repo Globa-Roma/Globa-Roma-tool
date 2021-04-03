@@ -167,7 +167,7 @@ class Signup extends Component {
     render() {
         return (
             <div>
-                <h1>Globa Aroma</h1>
+               
                  <div className="formContainer">
 
                  <ToastContainer

@@ -1,0 +1,78 @@
+.body{
+    background-color: rgba(0, 128, 128, 0.582);
+    margin-left: 10%;
+    margin-top: 5%;
+    width: 60%;
+    padding: 30px;
+}
+h2{
+    margin-left: 20%;
+    font-size: 30px;
+    font-family:monospace;
+}
+h1{
+    text-align: center;
+    font-size: 30px;
+    font-family:monospace;
+}
+.formContainer{
+    background-color: rgba(0, 128, 128, 0.582);
+    padding: 20px;
+    border-radius: 2%;
+    width: 60%;
+    margin-left: 10%;
+}
+
+
+.teles, .citys, .names, .emails{
+    padding: 10px;
+    margin: 10px;
+    width: 80%;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px lightgray solid;
+   
+}
+.date{
+    text-align: center;
+    margin: 10px;
+    width: 430px;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px lightgray solid;
+    
+
+}
+ .selects{
+    margin: 10px;
+    width: 80%;
+    height: 60px;
+    border-radius: 5px;
+    
+   
+}
+
+.textareas{
+    padding: 20px;
+    margin: 10px;
+    width: 80%;
+    height: 150px;
+    border-radius: 5px;
+    border: 1px lightgray solid;
+    
+}
+.save{
+    margin: 10px;
+    margin-left: 10px;
+    width: 80%;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #95C11F;
+    color: black;
+    border: 2px rgba(0, 128, 128, 0.582);
+}
+
+.save:hover{
+    color: white;
+
+}

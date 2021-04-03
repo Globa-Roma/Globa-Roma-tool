@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
-import { Link } from "react-router-dom";
+import  {Link} from "react-router-dom";
 import axios from 'axios';
 import Data from './Data.css'
-import { response } from 'express';
+
 
 
 
@@ -42,20 +42,26 @@ class Client extends Component{
               });
           }
 
-       // render if there is no client
+
+  // delete
+
+  delete(id) {
+    axios.delete('/clients/'+id)
+      .then(response => { console.log(response.data)});
+      this.setState({
+      clients: this.state.Clients.filter(el => el._id !== id)
+    })
+  }
+
+    // render if there is no client
           noClient =()=>{
-            if (!this.state.Clients.length) 
-            {return <h1 className="client">Loading .....</h1>}
+            if (this.state.Clients.length == 0) 
+            {return <h1 className="client">Loading....</h1>}
+            
           }
 
 
-          delete(id) {
-            axios.delete('/clients/'+id)
-              .then(response => { console.log(response.data)});
-              this.setState({
-              clients: this.state.Clients.filter(el => el._id !== id)
-            })
-          }
+         
 
    
 

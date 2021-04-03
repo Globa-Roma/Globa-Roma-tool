@@ -4,6 +4,7 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { Link } from "react-router-dom";
 import Select from 'react-select';
+import Update from './Update.css'
 
 
 
@@ -179,27 +180,36 @@ export default class Edit extends Component {
       window.location = '/clients';
   }
 
-  render() {
-    return (
-    <div>
-      <h3>Edit </h3>
-      <form className="form" onSubmit={this.onSubmit}>
+  // render if there is no client
+  noClient =()=>{
+    if (this.state.users.length == 0) 
+    {return <h1 className="client">Loading....</h1>}
+    
+  }
+
+                  render() {
+                    return (
+                    <div className="body">
+                       {this.noClient(this.state.Clients)}
+                      <h2>Client Detail </h2>
+                      <form className="form" onSubmit={this.onSubmit}>
                         
-                             <input type="hidden" name="id" value={this.state._id}/>
-                             <input className="name" type="text" placeholder="Name" value={this.state.fullName || ''} onChange={(event) => this.onChangeFullName(event)} maxLength={30} ></input>
-                            <input className="email" type="text" placeholder="Email" value={this.state.email} onChange={(event) => this.onChangeEmail(event)} maxLength={20} ></input>
-                            <input className="tele" type="number" placeholder="Telephone" value={this.state.telephone} onChange={(event) => this.onChangeTelephone(event)} ></input>
-                            <input className="city" type="text" placeholder="City" value={this.state.city} onChange={(event) => this.onChangeCity(event)} maxLength={15} ></input>
-                            <Select className="select" placeholder="Language" isMulti value={this.state.language} onChange={this.onChangeLanguage} options={language} theme={theme} ></Select>
-                            <Select className="select" placeholder="Interset" isMulti value={this.state.interest} onChange={this.onChangeInterest} options={select} theme={theme} ></Select>
-                            <textarea className="textarea" type="text" placeholder="100 words limit" value={this.state.other} onChange={(event) => this.onChangeOther(event)} maxLength={100}></textarea> 
+                            <input type="hidden" name="id" value={this.state._id}/>
+                            <input className="names" type="text" placeholder="Name" value={this.state.fullName || ''} onChange={(event) => this.onChangeFullName(event)} maxLength={30} ></input>
+                            <input className="emails" type="text" placeholder="Email" value={this.state.email} onChange={(event) => this.onChangeEmail(event)} maxLength={20} ></input>
+                            <input className="teles" type="number" placeholder="Telephone" value={this.state.telephone} onChange={(event) => this.onChangeTelephone(event)} ></input>
+                            <input className="citys" type="text" placeholder="City" value={this.state.city} onChange={(event) => this.onChangeCity(event)} maxLength={15} ></input>
+                            <Select className="selects" placeholder="Language" isMulti value={this.state.language} onChange={this.onChangeLanguage} options={language} theme={theme} ></Select>
+                            <Select className="selects" placeholder="Interset" isMulti value={this.state.interest} onChange={this.onChangeInterest} options={select} theme={theme} ></Select>
+                            <textarea className="textareas" type="text" placeholder="100 words limit" value={this.state.other} onChange={(event) => this.onChangeOther(event)} maxLength={100}></textarea> 
                             <div>
                               <DatePicker
+                                className="date"
                                 selected={this.state.date}
                                 onChange={this.onChangeDate}
                               />
                             </div>
-                            <button onClick={this.notify} type="submit" className="submit">Save</button>
+                            <button onClick={this.notify} type="submit" className="save">Save</button>
                         </form>
     </div>
     )
