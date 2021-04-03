@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import  {Link} from "react-router-dom";
 import axios from 'axios';
 import Data from './Data.css'
+import { Input } from 'antd';
 
 
 
@@ -9,6 +10,8 @@ import Data from './Data.css'
 
 
 class Client extends Component{
+
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -23,6 +26,8 @@ class Client extends Component{
         };
 
         this.delete = this.delete.bind(this)
+        this.changeSearch = this.changeSearch.bind(this)
+
       }
 
       componentDidMount =() =>{
@@ -42,16 +47,39 @@ class Client extends Component{
               });
           }
 
-
-  // delete
-
-  delete(id) {
+      
+// delete
+   delete(id) {
     axios.delete('/clients/'+id)
       .then(response => { console.log(response.data)});
+      alert('Do you want to delete this client ????')
       this.setState({
       clients: this.state.Clients.filter(el => el._id !== id)
     })
   }
+
+
+  // search engine
+
+  filterContent(Clients, searchTerm){
+    const result =  this.state.Clients.filter((client )=> 
+    client.fullName.toLowerCase().includes(searchTerm) ||
+    client.city.toLowerCase().includes(searchTerm))
+    this.setState({Clients: result})
+}
+ changeSearch = (e) => {
+    //console.log(e.currentTarget.value)
+    const searchTerm = e.currentTarget.value;
+        axios.get('/clients')
+          .then((res) => {
+            this.filterContent(res.data.Clients, searchTerm)
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+
+
 
     // render if there is no client
           noClient =()=>{
@@ -60,34 +88,38 @@ class Client extends Component{
             
           }
 
-
-         
-
-   
-
-
-  render(){
+render(){
 
         return(
           
         <div className="blog">
-          {this.noClient(this.state.Clients)}
          
+           <div className="clientSearch">
+                <p className="head">Filter</p>
+                <div className="search"> 
+                  <input
+                      className="searchInput"
+                      placeholder="Search By Name or city"
+                      onChange={this.changeSearch}
+                  />
+                </div>
+         
+          </div>
+
+          <div className="listing">
           <div className="clientsData">
-             
-                <Link className="add"  to="/register">
+          {this.noClient(this.state.Clients)}
+             <Link className="add"  to="/register">
                   <button className="addButton">
                     <img className="addImage" src="https://img.icons8.com/material-rounded/24/000000/plus--v1.png"/>
                     Add Client
                     </button>
                   </Link>
-                  <h2>Our Clients</h2>
-                
-                  
+                 <h2>Our Clients</h2>
                   <table className=" table table-striped">
                      <thead>
                           <tr className="thead">
-                            <th>Full Name</th>
+                            <th>Name</th>
                             <th>Email</th>
                             <th>Mobile</th>
                             <th>City</th>
@@ -125,9 +157,10 @@ class Client extends Component{
           </tbody>
         </table>
       </div> 
+    </div>
   </div>  
   )}
-a
+
 }
 
     export default Client
