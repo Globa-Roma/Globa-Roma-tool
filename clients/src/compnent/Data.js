@@ -18,6 +18,7 @@ class Client extends Component{
             language: "",
             other: "",
             interest: "",
+            spheres:"",
             Clients: [],
            
         };
@@ -62,7 +63,9 @@ class Client extends Component{
     const result =  this.state.Clients.filter((client )=> 
     client.fullName.toLowerCase().includes(searchTerm) ||
     client.city.toLowerCase().includes(searchTerm)||
-    client.other.toLowerCase().includes(searchTerm))
+    client.language.toLowerCase().includes(searchTerm)||
+    client.interest.toLowerCase().includes(searchTerm)||
+    client.spheres.toLowerCase().includes(searchTerm))
     this.setState({Clients: result})
 }
  changeSearch = (e) => {
@@ -103,40 +106,14 @@ render(){
                   />
             </div>
             <div className="checkbox">
-                    <p>Language</p>
-                     <label>
-                        <input type="checkbox" className="lang" name="english"/>
+                     <div>
+                        <input type="checkbox" className="check" name="english"/>
                         <span>English</span>
-                      </label>
-                      <label>
-                        <input type="checkbox" className="lang" name="frans"/>
+                      </div>
+                      <div>
+                        <input type="checkbox" className="check" name="frans"/>
                         <span>Frans</span>
-                      </label>
-                      <label>
-                        <input type="checkbox" className="lang" name="dutch"/>
-                        <span>Dutch</span>
-                      </label>
-                          <p>Interest</p>
-                     <label>
-                        <input type="checkbox" className="lang"/>
-                        <span>Code</span>
-                      </label>
-                      <label>
-                        <input type="checkbox" className="lang"/>
-                        <span>Paint</span>
-                      </label>
-                      <label>
-                        <input type="checkbox" className="lang"/>
-                        <span>Dance</span>
-                      </label>
-                      <label>
-                        <input type="checkbox" className="lang"/>
-                        <span>Travel</span>
-                      </label>
-                      <label>
-                        <input type="checkbox" className="lang"/>
-                        <span>Reading</span>
-                      </label>
+                      </div>
                   </div>
           </div>
 
@@ -149,7 +126,7 @@ render(){
                     Add Client
                     </button>
                   </Link>
-                 <h2>Our Clients</h2>
+                 <h2>Our Clients List</h2>
                   <table className=" table table-striped">
                     
                    
@@ -175,14 +152,8 @@ render(){
                   <td key={person.id}>{person.email}</td>
                   <td key={person.id}>{person.telephone}</td>
                   <td key={person.id}>{person.city}</td>
-                  <td key={person.id} className="lang">{person.language.map((lang, index ) =>{
-                             return( <span key={index}> {lang.label}/</span> )
-                            })}
-                  </td>
-                  <td  key={person.id} className="int">{person.interest.map((lang, index ) =>{
-                             return( <span key={person.id}> {lang.label}/ </span> )
-                            })}
-                    </td> 
+                  <td key={person.id}>{person.language}</td>
+                  <td key={person.id}>{person.interest}</td> 
                     <td>
                          <Link to={"/edit/"+person._id}> <img src="https://img.icons8.com/fluent-systems-filled/24/000000/ball-point-pen.png"/></Link>
                     </td>

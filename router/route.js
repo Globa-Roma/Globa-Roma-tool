@@ -27,6 +27,7 @@ router.post('/register', (req, res) => {
     language: req.body.language,
     other: req.body.other,
     interest: req.body.interest,
+    spheres: req.body.spheres
     
     
   })
@@ -66,6 +67,7 @@ router.route('/update/:id').post((req, res) => {
       people.language = req.body.language;
       people.interest = req.body.interest;
       people.other = req.body.other;
+      people.spheres = req.body.spheres;
       people.date = Date.parse(req.body.date);
 
       people.save()

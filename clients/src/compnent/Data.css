@@ -84,12 +84,13 @@ color: white;
     color: white;
   
 }
-.lang{
+.check{
     margin: 10px;
 }
-.checkbox p {
+.checkbox div {
     color: #95C11F;
     font-weight: bold;
+    margin: 20px;
 }
 
 

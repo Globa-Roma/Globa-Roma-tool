@@ -7,60 +7,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import Select from 'react-select';
 import { Link } from "react-router-dom";
 import Signin from './Signin.css'
-//import 'attention_seekers/swing.css';
 
-
-
-
-// The options 
-
-const select = [
-    {
-        value: 1,
-        label: "code"
-    },
-    {
-        value: 2,
-        label: "Painting"
-    },
-    {
-        value: 3,
-        label: "dance"
-    },
-    {
-        value: 4,
-        label: "Travel"
-    },
-    {
-        value: 5,
-        label: "Reading"
-    }
-]
-
-const language = [
-    {
-        value: 1,
-        label: "english"
-    },
-    {
-        value: 2,
-        label: "dutch"
-    },
-    {
-        value: 3,
-        label: "france"
-    }
-]
-
-
-// multiselective style
-const theme = theme => ({
-    ...theme,
-    colors: {
-        ...theme.colors,
-        primary25: "#95C11F"
-    }
-});
 
 
 
@@ -73,9 +20,10 @@ class Signup extends Component {
             email: "",
             telephone: "",
             city: "",
-            language: [],
+            language: "",
             other: "",
-            interest: []
+            interest: "",
+            spheres: ""
         }
 
         this.changeFullName = this.changeFullName.bind(this)
@@ -85,6 +33,7 @@ class Signup extends Component {
         this.changeLanguage = this.changeLanguage.bind(this)
         this.changeOther = this.changeOther.bind(this)
         this.changeInterest = this.changeInterest.bind(this)
+        this.changeSpheres = this.changeSpheres.bind(this)
         this.collect = this.collect.bind(this)
        }
 
@@ -110,8 +59,10 @@ class Signup extends Component {
             city: event.target.value
         })
     }
-    changeLanguage = (language) =>{
-        this.setState({ language });
+    changeLanguage(event){
+        this.setState({
+            language: event.target.value
+        })
     }
         
     changeOther(event) {
@@ -119,8 +70,15 @@ class Signup extends Component {
             other: event.target.value
         })
     }
-    changeInterest = (interest) => {
-        this.setState({ interest });
+    changeInterest(event){
+        this.setState({
+            interest: event.target.value
+        })
+    }
+    changeSpheres(event){
+        this.setState({
+            spheres: event.target.value
+        })
     }
 
 
@@ -139,9 +97,9 @@ class Signup extends Component {
             city: this.state.city,
             language: this.state.language,
             other: this.state.other,
-            interest: this.state.interest
-
-        }
+            interest: this.state.interest,
+            spheres: this.state.spheres
+         }
 
 
         axios.post('/register', regester)
@@ -153,9 +111,10 @@ class Signup extends Component {
             email: "",
             telephone: "",
             city: "",
-            language: [],
+            language: "",
             other: "",
-            interest: []
+            interest: "",
+            spheres: ""
         })
     }
 
@@ -178,9 +137,10 @@ class Signup extends Component {
 
                  <ToastContainer
                    draggable={false}
-                   autoClose={4000}/>
+                   autoClose={4000}
+                   />
                        
-                        <h2> Register here ...</h2>
+                        <h2> Register here </h2>
                         <div className="div" class="animate__animated animate__backInLeft">
                         <form className="form"  onSubmit={this.collect}>
                         
@@ -189,9 +149,10 @@ class Signup extends Component {
                             <input className="email" type="text" placeholder="Email" value={this.state.email} onChange={(event) => this.changeEmail(event)} maxLength={20} required></input>
                             <input className="tele" type="number" placeholder="Telephone" value={this.state.telephone} onChange={(event) => this.changeTelephone(event)} required></input>
                             <input className="city" type="text" placeholder="City" value={this.state.city} onChange={(event) => this.changeCity(event)} maxLength={15} required></input>
-                            <Select className="select" placeholder="Language" isMulti value={this.state.language} onChange={this.changeLanguage} options={language} theme={theme} required></Select>
-                            <Select className="select" placeholder="Interset" isMulti value={this.state.interest} onChange={this.changeInterest} options={select} theme={theme} required></Select>
-                            <textarea className="textarea" type="text" placeholder="(Optional) 100 words limit" value={this.state.other} onChange={(event) => this.changeOther(event)} maxLength={100}></textarea>
+                            <input className="selects" type="text" placeholder="Language" value={this.state.language} onChange={(event) => this.changeLanguage(event)}  required></input>
+                            <input className="selects" type="text" placeholder="Interest" value={this.state.interest} onChange={(event) => this.changeInterest(event)} required></input>
+                            <input className="selects" type="text" placeholder="Spheres (Optional)" value={this.state.spheres} onChange={(event) => this.changeSpheres(event)} ></input>
+                            <textarea className="textarea" type="text" placeholder="Note (Optional)" value={this.state.other} onChange={(event) => this.changeOther(event)} ></textarea>
                             <button onClick={this.notify} type="submit" className="submit">Add</button>
                             <Link to="/clients">
                                 <button className="viewList"> 
