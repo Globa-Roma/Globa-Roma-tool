@@ -15,15 +15,20 @@ class Client extends Component{
             email: "",
             telephone: "",
             city: "",
-            language: "",
+            language: [],
             other: "",
-            interest: "",
+            interest: [],
             Clients: [],
-           
+            // itemCheckedLang: {
+            //   English: false,
+            //   Frans: false,
+            //   Dutch: false
+            // }
         };
 
         this.delete = this.delete.bind(this)
         this.changeSearch = this.changeSearch.bind(this)
+        //this.toggleChange = this.toggleChange.bind(this)
 
       }
 
@@ -61,8 +66,7 @@ class Client extends Component{
   filterContent(Clients, searchTerm){
     const result =  this.state.Clients.filter((client )=> 
     client.fullName.toLowerCase().includes(searchTerm) ||
-    client.city.toLowerCase().includes(searchTerm)||
-    client.other.toLowerCase().includes(searchTerm))
+    client.city.toLowerCase().includes(searchTerm))
     this.setState({Clients: result})
 }
  changeSearch = (e) => {
@@ -77,24 +81,41 @@ class Client extends Component{
           });
       }
 
+// ckeckbox
+// toggleChange=( e)=>{
+//   var {name, checked} = e.target
+//   this.setState((e)=>{
+//     var select = e.itemCheckedLang
+//     return select.language
+   
+//   });
+
+//}
+
 
     // render if there is no client
-      noClient =()=>{
-        if (this.state.Clients.length == 0) 
-          {return <h1 className="client">Loading....</h1>}
+          noClient =()=>{
+            if (this.state.Clients.length == 0) 
+            {return <h1 className="client">Loading....</h1>}
+            
           }
-  // refresh page
-   refreshPage=()=>{ 
-    window.location.reload(); 
-}
+
+          noClients =()=>{
+            if (this.state.Clients.length == 0) 
+            {return <h1 className="client">No</h1>}
+            
+          }
 
 render(){
+
+  //var display = Object.keys(this.state.itemCheckedLang).filter((x)=>this.state.itemCheckedLang[x])
+
         return(
           
         <div className="blog">
          
            <div className="clientSearch">
-                <p  onClick={ this.refreshPage } className="head">Filter</p>
+                <p className="head">Filter</p>
                 <div className="search"> 
                   <input
                       className="searchInput"
@@ -102,42 +123,69 @@ render(){
                       onChange={this.changeSearch}
                   />
             </div>
-            <div className="checkbox">
+              <div className="checkbox">
                     <p>Language</p>
                      <label>
-                        <input type="checkbox" className="lang" name="english"/>
+                        <input type="checkbox" className="lang" name="english"  onChange={this.toggleChange}
+                        />
                         <span>English</span>
                       </label>
                       <label>
-                        <input type="checkbox" className="lang" name="frans"/>
+                        <input type="checkbox" className="lang" name="frans" onChange={this.toggleChange}
+                        />
                         <span>Frans</span>
                       </label>
                       <label>
-                        <input type="checkbox" className="lang" name="dutch"/>
+                        <input type="checkbox" className="lang" name="dutch" onChange={this.toggleChange}
+                        />
                         <span>Dutch</span>
                       </label>
-                          <p>Interest</p>
+
+                      <p>Interest</p>
                      <label>
-                        <input type="checkbox" className="lang"/>
+                        <input type="checkbox"
+                        className="lang"
+                          // defaultChecked={this.state.isChecked}
+                          // onChange={this.toggleChange}
+                        />
                         <span>Code</span>
                       </label>
                       <label>
-                        <input type="checkbox" className="lang"/>
+                        <input type="checkbox"
+                        className="lang"
+                          // defaultChecked={this.state.isChecked}
+                          // onChange={this.toggleChange}
+                        />
                         <span>Paint</span>
                       </label>
                       <label>
-                        <input type="checkbox" className="lang"/>
+                        <input type="checkbox"
+                        className="lang"
+                          // defaultChecked={this.state.isChecked}
+                          // onChange={this.toggleChange}
+                        />
                         <span>Dance</span>
                       </label>
                       <label>
-                        <input type="checkbox" className="lang"/>
+                        <input type="checkbox"
+                        className="lang"
+                          // defaultChecked={this.state.isChecked}
+                          // onChange={this.toggleChange}
+                        />
                         <span>Travel</span>
                       </label>
                       <label>
-                        <input type="checkbox" className="lang"/>
+                        <input type="checkbox"
+                        className="lang"
+                          // defaultChecked={this.state.isChecked}
+                          // onChange={this.toggleChange}
+                        />
                         <span>Reading</span>
                       </label>
-                  </div>
+                      {/* {display} */}
+              </div>
+                
+         
           </div>
 
           <div className="listing">

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
-import "react-datepicker/dist/react-datepicker.css";
-import { Link } from "react-router-dom";
+import "react-datepicker/dist/react-datepicker.css"
 import Select from 'react-select';
 import Update from './Update.css'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { Link } from "react-router-dom";
 
 
 
@@ -106,7 +108,7 @@ export default class Edit extends Component {
       .then(response => {
         if (response.data.length > 0) {
           this.setState({
-            users: response.data.map(user => user.fullName),
+            users: response.data.map(user => user._id),
           })
         }
       })
@@ -177,21 +179,21 @@ export default class Edit extends Component {
 
     axios.post('/update/' + this.props.match.params.id, editing)
       .then(res => console.log(res.data));
-      window.location = '/clients';
   }
 
-  // render if there is no client
-  noClient =()=>{
-    if (this.state.users.length == 0) 
-    {return <h1 className="client">Loading....</h1>}
-    
-  }
+    // notify message
+    notify = () => {
+       toast.success('You Updated successfully!');
+    }
 
-                  render() {
+                    render() {
                     return (
                     <div className="body">
-                       {this.noClient(this.state.Clients)}
                       <h2>Client Detail </h2>
+
+                      <ToastContainer
+                   draggable={false}
+                   autoClose={4000}/>
                       <form className="form" onSubmit={this.onSubmit}>
                         
                             <input type="hidden" name="id" value={this.state._id}/>
@@ -210,6 +212,11 @@ export default class Edit extends Component {
                               />
                             </div>
                             <button onClick={this.notify} type="submit" className="save">Save</button>
+                            <Link to="/clients">
+                                <button className="backlist"> 
+                                <img src="https://img.icons8.com/material-rounded/24/000000/person-male.png"/>Back to List
+                                </button>
+                            </Link>
                         </form>
     </div>
     )

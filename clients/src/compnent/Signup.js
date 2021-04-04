@@ -7,6 +7,8 @@ import 'react-toastify/dist/ReactToastify.css'
 import Select from 'react-select';
 import { Link } from "react-router-dom";
 import Signin from './Signin.css'
+//import 'attention_seekers/swing.css';
+
 
 
 
@@ -159,7 +161,11 @@ class Signup extends Component {
 
     // notify message
     notify = () => {
-        toast.success('You regestered successfully!');
+         if(this.state.city && this.state.language && this.state.fullName && this.state.interest && this.state.email && this.state.telephone){
+            toast.success('You regestered successfully!');
+         }else{
+            toast.error('Please fill in the form to registere sucessefully ');
+         }
     }
 
 
@@ -171,13 +177,12 @@ class Signup extends Component {
                  <div className="formContainer">
 
                  <ToastContainer
-                            draggable={false}
-                            //transition={zoom}
-                            autoClose={3000}
-                        />
+                   draggable={false}
+                   autoClose={4000}/>
                        
                         <h2> Register here ...</h2>
-                        <form className="form" onSubmit={this.collect}>
+                        <div className="div" class="animate__animated animate__backInLeft">
+                        <form className="form"  onSubmit={this.collect}>
                         
                              <input type="hidden" name="id" value={this.state._id}/>
                              <input className="name" type="text" placeholder="Name" value={this.state.fullName} onChange={(event) => this.changeFullName(event)} maxLength={30} required></input>
@@ -186,7 +191,7 @@ class Signup extends Component {
                             <input className="city" type="text" placeholder="City" value={this.state.city} onChange={(event) => this.changeCity(event)} maxLength={15} required></input>
                             <Select className="select" placeholder="Language" isMulti value={this.state.language} onChange={this.changeLanguage} options={language} theme={theme} required></Select>
                             <Select className="select" placeholder="Interset" isMulti value={this.state.interest} onChange={this.changeInterest} options={select} theme={theme} required></Select>
-                            <textarea className="textarea" type="text" placeholder="100 words limit" value={this.state.other} onChange={(event) => this.changeOther(event)} maxLength={100}></textarea>
+                            <textarea className="textarea" type="text" placeholder="(Optional) 100 words limit" value={this.state.other} onChange={(event) => this.changeOther(event)} maxLength={100}></textarea>
                             <button onClick={this.notify} type="submit" className="submit">Add</button>
                             <Link to="/clients">
                                 <button className="viewList"> 
@@ -194,6 +199,7 @@ class Signup extends Component {
                                 </button>
                             </Link>
                         </form>
+                    </div>
                         
                 </div>
             </div>

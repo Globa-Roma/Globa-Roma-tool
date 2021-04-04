@@ -4,7 +4,9 @@
     margin-top: 5%;
     width: 60%;
     padding: 30px;
-}
+    box-shadow: 10px 10px 8px  #888888;
+    border-radius: 2%;
+ }
 h2{
     margin-left: 20%;
     font-size: 30px;
@@ -61,10 +63,10 @@ h1{
     border: 1px lightgray solid;
     
 }
-.save{
+.save, .backlist{
     margin: 10px;
     margin-left: 10px;
-    width: 80%;
+    width: 40%;
     height: 50px;
     border-radius: 5px;
     background-color: #95C11F;
@@ -72,7 +74,7 @@ h1{
     border: 2px rgba(0, 128, 128, 0.582);
 }
 
-.save:hover{
+.save:hover, .backlist:hover{
     color: white;
 
 }

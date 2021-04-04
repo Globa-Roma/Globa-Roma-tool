@@ -5,10 +5,14 @@ body{
     display: flex;
     width: 100%;
     margin-left: -10%;
+
 }
 
 .listing{
     width: 70%;
+    box-shadow: 10px 10px 8px  #888888;
+    border-radius: 2%;
+    background-color: rgba(2, 138, 138, 0.582); 
 }
 
 .clientSearch{
@@ -21,18 +25,20 @@ body{
     width: 100%;
     margin-left: -5%;
     
+    
 }
 
 .searchInput{
     width: 280px;
     height: 50px;
     border: 2px black solid;
+    border-radius: 5px;
 }
 .clientsData{
     margin: 10px;
     padding: 10px;
     width: 100%;
-    background-color: rgba(2, 138, 138, 0.582);
+    /* background-color: rgba(2, 138, 138, 0.582); */
     
 }
 .head{
@@ -41,6 +47,8 @@ body{
     text-align: center;
     font-weight: bold;
     font-size: 20px;
+    border-radius: 5px;
+
 
 }
 
@@ -76,7 +84,13 @@ color: white;
     color: white;
   
 }
-
+.lang{
+    margin: 10px;
+}
+.checkbox p {
+    color: #95C11F;
+    font-weight: bold;
+}
 
 
 

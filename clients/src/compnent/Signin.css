@@ -19,10 +19,14 @@ h1{
     border-radius: 2%;
     width: 60%;
     margin-left: 15%;
+    box-shadow: 10px 10px 8px #888888
 }
 .form{
     margin-left: 10%;
-
+}
+.div{
+    animation: backInLeft; 
+    animation-duration: 1s; 
 }
 .forms{
     margin: 10px;
