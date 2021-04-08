@@ -1,0 +1,27 @@
+.input{
+    margin: 10px;
+    width: 95%;
+    height: 50px;
+    padding: 10px;
+}
+.send{
+    margin: 10px;
+    margin-left: 35%;
+    width: 100px;
+    height: 40px;
+    background-color: #95C11F;
+    border: white 2px solid;
+    }
+.send:hover{
+    color: white
+}
+.message{
+    margin: 10px;
+    width: 95%;
+    height: 150px;
+    padding: 10px;
+
+}
+h3{
+    color: #95C11F;
+}
