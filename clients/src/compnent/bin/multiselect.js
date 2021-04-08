@@ -9,6 +9,57 @@ import 'react-toastify/dist/ReactToastify.css'
 import { Link } from "react-router-dom";
 
 
+
+// The options 
+
+const select = [
+  {
+      value: 1,
+      label: "code"
+  },
+  {
+      value: 2,
+      label: "Painting"
+  },
+  {
+      value: 3,
+      label: "dance"
+  },
+  {
+      value: 4,
+      label: "Travel"
+  },
+  {
+      value: 5,
+      label: "Reading"
+  }
+]
+
+const language = [
+  {
+      value: 1,
+      label: "english"
+  },
+  {
+      value: 2,
+      label: "dutch"
+  },
+  {
+      value: 3,
+      label: "france"
+  }
+]
+
+
+// multiselective style
+const theme = theme => ({
+  ...theme,
+  colors: {
+      ...theme.colors,
+      primary25: "#95C11F"
+  }
+});
+
 export default class Edit extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +71,6 @@ export default class Edit extends Component {
         this.onChangeLanguage = this.onChangeLanguage.bind(this)
         this.onChangeOther = this.onChangeOther.bind(this)
         this.onChangeInterest = this.onChangeInterest.bind(this)
-        this.onChangeSpheres = this.onChangeSpheres.bind(this);
         this.onChangeDate = this.onChangeDate.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
@@ -29,10 +79,9 @@ export default class Edit extends Component {
             email: "",
             telephone: "",
             city: "",
-            language: "",
+            language: [],
             other: "",
-            interest: "",
-            spheres: "",
+            interest: [],
             users: []
     }
   }
@@ -48,7 +97,6 @@ export default class Edit extends Component {
           language: response.data.language,
           other: response.data.other,
           interest: response.data.interest,
-          spheres: response.data.spheres,
           date: new Date(response.data.date)
         })   
       })
@@ -91,24 +139,19 @@ export default class Edit extends Component {
       telephone: e.target.value
     })
   }
-  onChangeInterest(event){
+  onChangeInterest(e) {
     this.setState({
-        interest: event.target.value
+      interest: e.target.value
     })
-}
-onChangeLanguage(event){
+  }
+  onChangeLanguage(e) {
     this.setState({
-        language: event.target.value
+      language: e.target.value
     })
-}
+  }
   onChangeOther(e) {
     this.setState({
       other: e.target.value
-    })
-  }
-  onChangeSpheres(e) {
-    this.setState({
-      spheres: e.target.value
     })
   }
 
@@ -129,7 +172,6 @@ onChangeLanguage(event){
             language: this.state.language,
             other: this.state.other,
             interest: this.state.interest,
-            spheres: this.state.spheres,
             date: this.state.date
     }
 
@@ -150,20 +192,18 @@ onChangeLanguage(event){
                       <h2>Client Detail And Edit </h2>
 
                       <ToastContainer
-                        draggable={false}
-                        autoClose={4000}/>
+                   draggable={false}
+                   autoClose={4000}/>
                       <form className="form" onSubmit={this.onSubmit}>
                         
                             <input type="hidden" name="id" value={this.state._id}/>
-                            <p>fullName</p><input className="names" type="text"  value={this.state.fullName || ''} onChange={(event) => this.onChangeFullName(event)}  ></input>
-                            <p>email</p><input className="emails"   value={this.state.email} onChange={(event) => this.onChangeEmail(event)}  ></input>
-                            <p>Telephone</p><input className="teles" type="number" value={this.state.telephone} onChange={(event) => this.onChangeTelephone(event)} ></input>
-                            <p>City</p><input className="citys" type="text"  value={this.state.city} onChange={(event) => this.onChangeCity(event)} maxLength={15} ></input>
-                            <p>Language</p><input className="selects" type="text"  value={this.state.language} onChange={(event) => this.onChangeLanguage(event)} required></input>
-                            <p>Interest</p><input className="selects" type="text"  value={this.state.interest} onChange={(event) => this.onChangeInterest(event)} required></input>
-                            <p>spheres</p><input className="selects" type="text"  value={this.state.spheres} onChange={(event) => this.onChangeSpheres(event)} ></input>
-                            <p>Note</p><textarea className="textareas" type="text"  value={this.state.other} onChange={(event) => this.onChangeOther(event)} ></textarea> 
-                            <p>Recient Active</p>
+                            <input className="names" type="text" placeholder="Name" value={this.state.fullName || ''} onChange={(event) => this.onChangeFullName(event)} maxLength={30} ></input>
+                            <input className="emails" type="text" placeholder="Email" value={this.state.email} onChange={(event) => this.onChangeEmail(event)} maxLength={20} ></input>
+                            <input className="teles" type="number" placeholder="Telephone" value={this.state.telephone} onChange={(event) => this.onChangeTelephone(event)} ></input>
+                            <input className="citys" type="text" placeholder="City" value={this.state.city} onChange={(event) => this.onChangeCity(event)} maxLength={15} ></input>
+                            <Select className="selects" placeholder="Language" isMulti value={this.state.language} onChange={this.onChangeLanguage} options={language} theme={theme} ></Select>
+                            <Select className="selects" placeholder="Interset" isMulti value={this.state.interest} onChange={this.onChangeInterest} options={select} theme={theme} ></Select>
+                            <textarea className="textareas" type="text" placeholder="100 words limit" value={this.state.other} onChange={(event) => this.onChangeOther(event)} maxLength={100}></textarea> 
                             <div>
                               <DatePicker
                                 className="date"

@@ -44,11 +44,11 @@ h1{
     border: 2px white solid;
 
 }
- .select{
+ .selects{
     margin: 10px;
     width: 80%;
     height: 60px;
-    border-radius: 5px;
+    border: 2px white solid;
 }
 
 .textarea{

@@ -1,4 +1,5 @@
-
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Signup from './compnent/Signup'
 import Option from './compnent/Option'
@@ -8,9 +9,6 @@ import Login from "./compnent/Login"
 import Update from "./compnent/Update"
 
 
-
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
@@ -34,6 +32,7 @@ function App() {
         <Route path="/clients">
           <Data />
         </Route>
+
         <Route path="/edit/:id" component={Update} />
 
       </Switch>

@@ -89,7 +89,6 @@ class Signup extends Component {
 
         // to prevent defualt way to back to home page
         event.preventDefault()
-
         const regester = {
             fullName: this.state.fullName,
             email: this.state.email,
@@ -103,10 +102,8 @@ class Signup extends Component {
 
 
         axios.post('/register', regester)
-
-             .then(res => console.log(res.data))
-
-        this.setState({
+           .then(res => console.log(res.data))
+          this.setState({
             fullName: "",
             email: "",
             telephone: "",
@@ -119,11 +116,10 @@ class Signup extends Component {
     }
 
     // notify message
-    notify = () => {
+    notify = (e) => {
+        
          if(this.state.city && this.state.language && this.state.fullName && this.state.interest && this.state.email && this.state.telephone){
             toast.success('You regestered successfully!');
-         }else{
-            toast.error('Please fill in the form to registere sucessefully ');
          }
     }
 
@@ -143,10 +139,9 @@ class Signup extends Component {
                         <h2> Register here </h2>
                         <div className="div" class="animate__animated animate__backInLeft">
                         <form className="form"  onSubmit={this.collect}>
-                        
-                             <input type="hidden" name="id" value={this.state._id}/>
-                             <input className="name" type="text" placeholder="Name" value={this.state.fullName} onChange={(event) => this.changeFullName(event)} maxLength={30} required></input>
-                            <input className="email" type="text" placeholder="Email" value={this.state.email} onChange={(event) => this.changeEmail(event)} maxLength={20} required></input>
+                            <input type="hidden" name="id" value={this.state._id}/>
+                            <input className="name"  placeholder="Name" value={this.state.fullName} onChange={(event) => this.changeFullName(event)}  required></input>
+                            <input className="email" type="email" placeholder="Email" value={this.state.email} onChange={(event) => this.changeEmail(event)}  required></input>
                             <input className="tele" type="number" placeholder="Telephone" value={this.state.telephone} onChange={(event) => this.changeTelephone(event)} required></input>
                             <input className="city" type="text" placeholder="City" value={this.state.city} onChange={(event) => this.changeCity(event)} maxLength={15} required></input>
                             <input className="selects" type="text" placeholder="Language" value={this.state.language} onChange={(event) => this.changeLanguage(event)}  required></input>

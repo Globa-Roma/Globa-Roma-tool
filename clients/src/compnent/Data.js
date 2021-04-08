@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import  {Link} from "react-router-dom";
 import axios from 'axios';
 import Data from './Data.css'
+import Nodemailer from './Nodemailer'
 
 
 
@@ -80,42 +81,40 @@ class Client extends Component{
           });
       }
 
-
     // render if there is no client
       noClient =()=>{
         if (this.state.Clients.length == 0) 
           {return <h1 className="client">Loading....</h1>}
           }
-  // refresh page
-   refreshPage=()=>{ 
-    window.location.reload(); 
-}
+  
+      // refresh page
+      refreshPage=()=>{ 
+      window.location.reload(); 
+      }
 
 render(){
         return(
           
         <div className="blog">
+
          
            <div className="clientSearch">
-                <p  onClick={ this.refreshPage } className="head">Filter</p>
-                <div className="search"> 
+              <div className="search"> 
                   <input
                       className="searchInput"
                       placeholder="Search By Name or city"
                       onChange={this.changeSearch}
                   />
+               </div>
+
+            <div className="mailer">
+              <h3>Send email</h3>
+              <Nodemailer/>
             </div>
-            <div className="checkbox">
-                     <div>
-                        <input type="checkbox" className="check" name="english"/>
-                        <span>English</span>
-                      </div>
-                      <div>
-                        <input type="checkbox" className="check" name="frans"/>
-                        <span>Frans</span>
-                      </div>
-                  </div>
-          </div>
+      
+           </div> 
+
+
 
           <div className="listing">
           <div className="clientsData">
@@ -149,17 +148,17 @@ render(){
                 <tr>
                   
                   <td key={person.id}>{person.fullName}</td>
-                  <td key={person.id}>{person.email}</td>
-                  <td key={person.id}>{person.telephone}</td>
-                  <td key={person.id}>{person.city}</td>
-                  <td key={person.id}>{person.language}</td>
-                  <td key={person.id}>{person.interest}</td> 
-                    <td>
+                  <td key={person.email}>{person.email}</td>
+                  <td key={person.telephone}>{person.telephone}</td>
+                  <td key={person.city}>{person.city}</td>
+                  <td key={person.language}>{person.language}</td>
+                  <td key={person.interest}>{person.interest}</td> 
+                  <td>
                          <Link to={"/edit/"+person._id}> <img src="https://img.icons8.com/fluent-systems-filled/24/000000/ball-point-pen.png"/></Link>
-                    </td>
-                    <td>
+                  </td>
+                  <td>
                        <a href="" onClick={() => { this.delete(person._id) }}><img src="https://img.icons8.com/ios-glyphs/30/000000/delete-forever.png"/></a>
-                    </td>
+                  </td>
                     
                     
               </tr>

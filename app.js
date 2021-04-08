@@ -5,7 +5,9 @@ const mongoose = require('mongoose');
 //dotenv help to put the link save
 const dotenv = require('dotenv')
 const router = require('./router/route');
+const mailerRouter = require('./router/nodeRouter')
 const cors = require('cors');
+
 
 // body parser middleware
 app.use(bodyParser.json())
@@ -20,6 +22,7 @@ mongoose.connect(process.env.Database_link, { useNewUrlParser: true, useUnifiedT
 app.use(express.json());
 app.use(cors());
 app.use('/', router)
+app.use('/', mailerRouter)
 
 
 // // and this work in heroku

@@ -1,23 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Clients = require('../modles/signinSchema')
+const Nodemailer = require('nodemailer')
 
-
-
-// // get
-router.get('/clients', (req, res) => {
-
-  Clients.find({  })
-      .then((data) => {
-          // console.log('Data: ', data);
-          res.json(data);
-      })
-      .catch((error) => {
-          console.log('error: ', error);
-      });
-});
-
-// post client
+// post client (request data of client)
 router.post('/register', (req, res) => {
   const signupschema = new Clients({
     fullName: req.body.fullName,
@@ -39,7 +25,21 @@ router.post('/register', (req, res) => {
 })
 
 
-// find id
+// // get(get or render of client)
+router.get('/clients', (req, res) => {
+
+  Clients.find({})
+      .then((data) => {
+          // console.log('Data: ', data);
+          res.json(data);
+      })
+      .catch((error) => {
+          console.log('error: ', error);
+      });
+});
+
+
+// find id of client
 router.route('/:id').get((req, res) => {
   Clients.findById(req.params.id)
     .then(people => res.json(people))
@@ -47,7 +47,7 @@ router.route('/:id').get((req, res) => {
 });
 
 
-// delete
+// delete of client by id
 router.route('/clients/:id').delete((req, res) => {
   Clients.findByIdAndDelete(req.params.id)
     .then(() => res.json('Client deleted.'))
@@ -56,7 +56,7 @@ router.route('/clients/:id').delete((req, res) => {
 });
 
 
-// update
+// update of edit of client
 router.route('/update/:id').post((req, res) => {
   Clients.findById(req.params.id)
     .then(people => {
@@ -76,9 +76,6 @@ router.route('/update/:id').post((req, res) => {
     })
     .catch(err => res.status(400).json('Error: ' + err));
 });
-
-
-
 
 
 
