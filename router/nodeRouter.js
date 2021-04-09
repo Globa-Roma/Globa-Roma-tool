@@ -1,6 +1,8 @@
 const express = require('express');
 const mailerRouter = express.Router();
 const Nodemailer = require('nodemailer')
+const multer  = require('multer')
+const upload = multer()
 
 
 // nodemailer(request of data from form of sending email)
@@ -8,7 +10,7 @@ const Nodemailer = require('nodemailer')
 mailerRouter.post('/clients', (req, res)=>{
     let data = req.body
     const output = `${data.message}`
-    const subject = `Globa Aroma ${data.name}:  ${data.subject}`
+    const subject = `Globa Aroma ${data.email}:  ${data.subject}`
 
 // create reusable transporter object using the default SMTP transport
     let transporter = Nodemailer.createTransport({
@@ -16,8 +18,8 @@ mailerRouter.post('/clients', (req, res)=>{
       post: 587,
       secure: false,
       auth:{
-        user: 'feruzteame24',
-        pass: "Cocoabutter24"
+        user: 'globa.roma10',
+        pass: "globaroma100%"
       },
       tls:{
         rejectUnauthorized:false
@@ -27,7 +29,7 @@ mailerRouter.post('/clients', (req, res)=>{
 // setup email data with unicode symbols
    let mailOptions ={
       from: `Globa-Aroma`,
-      to: "feruzteame24@gmail.com, amaliarvm@gmail.com ", // list of recivers
+      to: "feruzteame24@gmail.com", // list of recivers
       subject: subject,
       html: output
     };
