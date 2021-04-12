@@ -4,56 +4,71 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Nodemailer from './Nodemailer.css'
 
-function Form() {
-    const [name, setName] = useState("");
-     const [email, setEmail] = useState("");
-     const [subject, setSubject] = useState("");
-    const [message, setMessage] = useState("");
+toast.configure()
+
+const Form = () =>{
+
+  const [file, setFile] = useState('');
+  const [filename, setFilename] = useState('Choose File');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [messages, setMessages] = useState("");
+    
+    
+  function onChange(e){
+    setFile(e.target.files[0]);
+    setFilename(e.target.files[0].name);
+  };
 
 
-// refresh and reset function
-function resfresh(){
-    window.location.reload();
-}
 
 // notify alert
 function notify() {
-        toast.success('You regestered successfully!');
-    
-}
+     toast.success('Email succesfully send!');
+    }
+
+
 // submition
 function formSubmit(e){
     e.preventDefault();
-    alert(`here is the state ${name}, ${email},${message}`)
-    let data = {
-        name: name,
-        email: email,
-        message: message,
-        subject: subject
-       }
-   
+
+    const data = new FormData();
+
+    data.append('file', file);
+    data.append("filename", filename)
+    data.append('name', name);
+    data.append('email', email);
+    data.append('messages', messages);
+    data.append('subject', subject);
+
+  
+  
+    console.log(data)
     axios.post('/clients', data)
-    
     .then(res => console.log(res.data))
     .catch(err =>{
         console.log(err)
     })
 
-
-    //resfresh()
-    
-}
+    // make the input value empty
+    data.append('file', "",);
+    data.append("filename", "")
+    data.append('name', "");
+    data.append('email', "");
+    data.append('messages', "");
+    data.append('subject', "");
+    }
 
     return (
 
-        
-      <form onSubmit={formSubmit}>
-
-          <ToastContainer
+      <div>
+        <ToastContainer
                    draggable={false}
-                   autoClose={2000}
+                   autoClose={false}
           />
-
+      <form 
+      onSubmit={formSubmit}>
         <input
           className="input"
           value={name}
@@ -83,15 +98,25 @@ function formSubmit(e){
         />
         <textarea
          className="message"
-          value={message}
-          onChange={e => setMessage(e.target.value)}
+          value={messages}
+          onChange={e => setMessages(e.target.value)}
           placeholder="Message"
           type="text"
           name="Message"
           required
         />
-        <p><button className="send" onClick={notify} type="submit">Send</button></p>
+       <input 
+          type='file'
+          id='customFile'
+          onChange={onChange}
+          multiple="multiple"
+          accept="pjp"
+      />
+      <p><button className="send" onClick={notify} type="submit">Send</button></p>
       </form>
+     
+   </div>  
+      
     );
   }
   export default Form;

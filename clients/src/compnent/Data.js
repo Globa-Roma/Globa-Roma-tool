@@ -29,12 +29,12 @@ class Client extends Component{
 
       }
 
-      componentDidMount =() =>{
+    componentDidMount =() =>{
             this.getBlogPost();
-          };
+        };
     
     
-         getBlogPost = () => {
+    getBlogPost = () => {
             axios.get('/clients')
               .then((res) => {
                 const data = res.data;
@@ -44,7 +44,7 @@ class Client extends Component{
               .catch((error) => {
                 console.log(error);
               });
-          }
+        }
 
       
 // delete
@@ -86,30 +86,26 @@ class Client extends Component{
         if (this.state.Clients.length == 0) 
           {return <h1 className="client">Loading....</h1>}
           }
-  
-      // refresh page
-      refreshPage=()=>{ 
-      window.location.reload(); 
-      }
+
 
 render(){
         return(
           
         <div className="blog">
 
-         
-           <div className="clientSearch">
+          <div className="clientSearch">
               <div className="search"> 
                   <input
                       className="searchInput"
                       placeholder="Search By Name or city"
                       onChange={this.changeSearch}
                   />
-               </div>
+            </div>
 
             <div className="mailer">
               <h3>Send email</h3>
               <Nodemailer/>
+             
             </div>
       
            </div> 

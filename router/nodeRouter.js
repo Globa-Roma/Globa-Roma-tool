@@ -1,16 +1,38 @@
 const express = require('express');
 const mailerRouter = express.Router();
-const Nodemailer = require('nodemailer')
-const multer  = require('multer')
-const upload = multer()
+ const Nodemailer = require('nodemailer')
 
 
-// nodemailer(request of data from form of sending email)
 
-mailerRouter.post('/clients', (req, res)=>{
-    let data = req.body
-    const output = `${data.message}`
-    const subject = `Globa Aroma ${data.email}:  ${data.subject}`
+mailerRouter.post('/clients', (req, res) => {
+
+const data = req.body
+console.log(`${data.name}, ${data.email}, ${data.subject}, ${data.messages}`)
+const output = `Name: ${data.name} <br>
+                Email: ${data.email}<br><br>
+                
+                ${data.messages}`
+
+ // file
+  if (req.files === null) {
+    return res.status(400).json({ msg: 'No file uploaded' });
+  }
+
+  const file = req.files.file
+  console.log(req.files)
+  console.log(file)
+
+  file.mv(`${__dirname}/../clients/public/images/${file.name}`, err => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send(err);
+    }
+
+    res.json({ fileName: file.name, filePath: `/images/${file.name}` });
+  });
+
+
+  
 
 // create reusable transporter object using the default SMTP transport
     let transporter = Nodemailer.createTransport({
@@ -19,7 +41,7 @@ mailerRouter.post('/clients', (req, res)=>{
       secure: false,
       auth:{
         user: 'globa.roma10',
-        pass: "globaroma100%"
+        pass: "*****"
       },
       tls:{
         rejectUnauthorized:false
@@ -28,10 +50,13 @@ mailerRouter.post('/clients', (req, res)=>{
 
 // setup email data with unicode symbols
    let mailOptions ={
-      from: `Globa-Aroma`,
-      to: "feruzteame24@gmail.com", // list of recivers
-      subject: subject,
-      html: output
+      from: `Globa-Aroma}`,
+      to: "globa.roma10@gmail.com", // list of recivers
+      name: `${data.name}`,
+      html: output,
+      attachments:[{
+          path: `${__dirname}/../clients/public/images/${file.name}`,
+        }]
     };
 
 // send mail with defined transport object
@@ -39,13 +64,15 @@ mailerRouter.post('/clients', (req, res)=>{
         if(err){
           return console.log(err)
         }else{
-          res.send(`Success`)
+          console.log(`Success`)
         }
     })
   
     transporter.close()
+
   })
 
-
   module.exports = mailerRouter;
+  
+
   
