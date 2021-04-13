@@ -1,0 +1,13 @@
+.buttons{
+    width: 100px;
+    height: 40px;
+    margin-left: 5%;
+    margin-top: -65px;
+    background-color: #95C11F;
+    border: white 2px solid;
+    
+}
+.option{
+    display: flex;
+    flex-direction: column;
+}

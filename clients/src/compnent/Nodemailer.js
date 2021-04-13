@@ -62,11 +62,12 @@ function formSubmit(e){
 
     return (
 
-      <div>
+      <div className="emailForm"> 
         <ToastContainer
                    draggable={false}
                    autoClose={false}
           />
+      <h3>Send email</h3>
       <form 
       onSubmit={formSubmit}>
         <input
@@ -106,6 +107,7 @@ function formSubmit(e){
           required
         />
        <input 
+          className="file"
           type='file'
           id='customFile'
           onChange={onChange}

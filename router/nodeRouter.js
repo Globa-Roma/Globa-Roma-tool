@@ -41,7 +41,7 @@ const output = `Name: ${data.name} <br>
       secure: false,
       auth:{
         user: 'globa.roma10',
-        pass: "*****"
+        pass: "globaroma100%"
       },
       tls:{
         rejectUnauthorized:false
