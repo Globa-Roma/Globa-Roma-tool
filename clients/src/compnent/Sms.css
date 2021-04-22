@@ -1,0 +1,33 @@
+.telediv{
+    width: 100%
+}
+.teleForm{
+    width: 90%;
+    margin: 10px;
+}
+.telenum{
+   width: 80%;
+   margin: 20px;
+}
+.teleMessage{
+    width: 80%;
+    margin: 20px;
+    height: 150px;
+    padding: 10px;
+
+}
+.telesubmit{
+    margin: 25px;
+    margin-top: -30px;
+    margin-left: 50%;
+    width: 100px;
+    height: 40px;
+    background-color: #95C11F;
+    border: white 2px solid;
+}
+.telesubmit:hover{
+    color: white
+}
+.teleTitle{
+    color: #95C11F;
+}

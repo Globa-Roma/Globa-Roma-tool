@@ -137,11 +137,11 @@ class Signup extends Component {
                    />
                        
                         <h2> Register here </h2>
-                        <div className="div" class="animate__animated animate__backInLeft">
+                        <div className="div" className="animate__animated animate__backInLeft">
                         <form className="form"  onSubmit={this.collect}>
                             <input type="hidden" name="id" value={this.state._id}/>
                             <input className="name"  placeholder="Name" value={this.state.fullName} onChange={(event) => this.changeFullName(event)}  required></input>
-                            <input className="email" type="email" placeholder="Email" value={this.state.email} onChange={(event) => this.changeEmail(event)}  required></input>
+                            <input className="email" type="email" placeholder="Email" value={this.state.email} onChange={(event) => this.changeEmail(event)} ></input>
                             <input className="tele" type="number" placeholder="Telephone" value={this.state.telephone} onChange={(event) => this.changeTelephone(event)} required></input>
                             <input className="city" type="text" placeholder="City" value={this.state.city} onChange={(event) => this.changeCity(event)} maxLength={15} required></input>
                             <input className="selects" type="text" placeholder="Language" value={this.state.language} onChange={(event) => this.changeLanguage(event)}  required></input>

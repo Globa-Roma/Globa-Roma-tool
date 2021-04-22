@@ -9,7 +9,7 @@ class Option extends Component{
     render(){
         return (
             <div> 
-                <h2 class="animate__animated animate__swing">Globa - Aroma</h2>
+                <h2>Globa - Aroma</h2>
                 <div className="links">
                     
                        <Link to="/register" className="link" >

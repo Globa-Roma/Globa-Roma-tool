@@ -251,8 +251,58 @@ render(){
 
 }
 
-    export default Client
+    // export default Client
 
 
+    // export default function Email() {
 
+    //   const [data, setData] = useState([])
+    //   const [q, setQ] = useState("")
+    //   const [searchColumns, setSearchColumns] = useState(["fullName", "email"])
+    
+    //   useEffect(()=>{
+    //     axios.get('/clients')
+    //        .then((res) => {
+    //         const data = res.data;
+    //         setData({ Clients: res.data });
+    //         console.log({ Clients: data });
+    //         })
+    //       .catch((error) => {
+    //           console.log(error);
+    //         });
+    //   }, [])
+    
+    //   function search(rows){
+    //     return rows.filter((row)=>
+    //     searchColumns.some(
+    //       (column)=>
+    //       row[column].toString().toLowerCase().indexOf(q.toLowerCase())> -1
+    //     )
+    
+    //     )
+    //   }
+    
+    //   const column = data[0] && Object.keys(data[0]);
+    
+    
+    //   return(
+    //     <div>
+    //         <input type="text" value={q} onChange={(e)=>setQ(e.target.value)}/>
+    //         {column && column.map((column) =>(
+    //            <label>
+    //              <input type="checkbox" checked={searchColumns.includes(column)}
+    //              onChange={(e)=>{
+    //                const checked = searchColumns.includes(column)
+    //                setSearchColumns((prev) =>
+    //                checked 
+    //                ? prev.filter((second)=>second !== column)
+    //                : [...prev, column]
+    //                )
+    //               }}/>
+    //            </label>
+    //         ))}
+    //     </div>
+    //   )
+    
+    // }
 

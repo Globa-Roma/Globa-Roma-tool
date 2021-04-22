@@ -5,18 +5,18 @@ const Clients = require('../modles/signinSchema')
 
 
 
-mailerRouter.post('/clients', (req, res) => {
+mailerRouter.post('/send-email', (req, res) => {
 
   const data = req.body
 
-  // file
+  // file attachment
   if (req.files === null) {
     return res.status(400).json({ msg: 'No file uploaded' });
   }
 
   const file = req.files.file
-  console.log(req.files)
-  console.log(file)
+  //console.log(req.files)
+  //console.log(file)
 
   file.mv(`${__dirname}/../clients/public/images/${file.name}`, err => {
     if (err) {
@@ -57,12 +57,11 @@ mailerRouter.post('/clients', (req, res) => {
           if(err){
               console.log(err);
           }
-          console.log('mail sent to ' + mailList);
+          //console.log('mail sent to ' + mailList);
       });
 });
 
 })
 
-//}
 
   module.exports = mailerRouter;

@@ -7,6 +7,8 @@ import Navbar from './compnent/Nav'
 import Data from './compnent/Data'
 import Login from "./compnent/Login"
 import Update from "./compnent/Update"
+// import Form from './compnent/Nodemailer'
+// import Sms from './compnent/Sms'
 
 
 
@@ -35,6 +37,14 @@ function App() {
         </Route>
 
         <Route path="/edit/:id" component={Update} />
+
+        {/* <Route path="/send-email">
+          <Form />
+        </Route>
+
+        <Route path="/send-sms">
+          <Sms />
+        </Route> */}
 
       </Switch>
     </div>

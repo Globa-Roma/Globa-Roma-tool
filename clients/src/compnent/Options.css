@@ -4,8 +4,6 @@ body{
 h2{
     font-size: 30px;
     font-family:monospace;
-    animation: swing; 
-    animation-duration: 10s;
 }
 .links{
     margin-left: 10%;

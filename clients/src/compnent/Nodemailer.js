@@ -4,7 +4,8 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Nodemailer from './Nodemailer.css'
 
-toast.configure()
+
+
 
 const Form = () =>{
 
@@ -16,17 +17,13 @@ const Form = () =>{
   const [messages, setMessages] = useState("");
     
     
-  function onChange(e){
+function onChange(e){
     setFile(e.target.files[0]);
     setFilename(e.target.files[0].name);
   };
 
 
 
-// notify alert
-function notify() {
-     toast.success('Email succesfully send!');
-    }
 
 
 // submition
@@ -41,11 +38,10 @@ function formSubmit(e){
     data.append('email', email);
     data.append('messages', messages);
     data.append('subject', subject);
-
-  
-  
     console.log(data)
-    axios.post('/clients', data)
+
+
+    axios.post('/send-email', data)
     .then(res => console.log(res.data))
     .catch(err =>{
         console.log(err)
@@ -110,11 +106,11 @@ function formSubmit(e){
           className="file"
           type='file'
           id='customFile'
+          name="file"
           onChange={onChange}
           multiple="multiple"
-          accept="pjp"
       />
-      <p><button className="send" onClick={notify} type="submit">Send</button></p>
+       <p><button className="send" type="submit">Send</button></p>
       </form>
      
    </div>  
@@ -122,24 +118,3 @@ function formSubmit(e){
     );
   }
   export default Form;
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-

@@ -4,6 +4,9 @@ import axios from 'axios';
 import Data from './Data.css'
 import Nodemailer from './Nodemailer'
 import Visiblity from './Visbility'
+import Email from "./Checkbox"
+
+
 
 
 
@@ -85,9 +88,9 @@ class Client extends Component{
           {return <h1 className="client">Loading....</h1>}
           }
 
-
+     
 render(){
-         
+  //const column = data[0] && Object.keys(data[0]); 
         return(
 
                
@@ -137,14 +140,14 @@ render(){
 
               {this.state.Clients.map(person => ( 
                
-                <tr>
+                <tr key={person.telephone}>
                   
-                  <td key={person.id}>{person.fullName}</td>
-                  <td key={person.email}>{person.email}</td>
-                  <td key={person.telephone}>{person.telephone}</td>
-                  <td key={person.city}>{person.city}</td>
-                  <td key={person.language}>{person.language}</td>
-                  <td key={person.interest}>{person.interest}</td> 
+                  <td>{person.fullName}</td>
+                  <td>{person.email}</td>
+                  <td>{person.telephone}</td>
+                  <td>{person.city}</td>
+                  <td>{person.language}</td>
+                  <td>{person.interest}</td> 
                   <td>
                          <Link to={"/edit/"+person._id}> <img src="https://img.icons8.com/fluent-systems-filled/24/000000/ball-point-pen.png"/></Link>
                   </td>
@@ -166,7 +169,3 @@ render(){
 }
 
     export default Client
-
-
-
-
